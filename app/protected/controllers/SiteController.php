@@ -43,20 +43,21 @@ class SiteController extends Controller
 			$this->redirect(array('index'));
 		}
 	}
-
+	// coding ...validate password & confirm-password : i'm forgot.
 	public function actionSignUp(){
 		$result = null;
 		$captcha=Yii::app()->getController()->createAction("captcha");
 		$code = $captcha->verifyCode;
 		if((isset($_POST['username']) || isset($_POST['password'])) && $code == $_POST['captcha-code']){
-			if(isset($_POST['username']) && isset($_POST['password'])){
+			if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm-password'])){
 				$username = trim($_POST['username']);
 				$password = trim($_POST['password']);
+				$confirmPassword = trim($_POST['confirm-password']);
 				$signUpRole = new SignUpValidate; // in components/SignUpValidate.php
 				$lenUsernameRole = $signUpRole->getRoleLenUserName();
 				$lenPasswordRole = $signUpRole->getRoleLenPassWord();
 				if(strlen($username) > $lenUsernameRole && strlen($password) > $lenPasswordRole){
-					if($signUpRole->isDuplicateUserName($username)){
+					if($signUpRole->isDuplicateUserName($username) || $confirmPassword != $password){
 						$result = array('signUpStatus' => 'failed');
 					}else{
 						Yii::app()->session->destroy(); // for insert duplicate user
@@ -65,7 +66,7 @@ class SiteController extends Controller
 						$model->username = $username;
 						$model->password = CPasswordHelper::hashPassword($password);
 						$model->auth_id = -1;
-						$model->ninckname = 'your nickname';
+						$model->nickname = 'your nickname';
 						$model->save();
 						/* end: insert new user */
 						$this->redirect(array('index'));

@@ -12,9 +12,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class='col-sm-2 control-label'>Fullname :</label>
+                <label for='fullname' class='col-sm-2 control-label'>Fullname :</label>
                 <div class="col-sm-5">
-                    <input type='text' disabled class="form-control" value='<?php echo $model->fullname; ?>'>
+                    <input type='text' id='fullname' name='fullname' class="form-control" value='<?php echo $model->fullname; ?>'>
                 </div>
             </div>
             <div class="form-group">

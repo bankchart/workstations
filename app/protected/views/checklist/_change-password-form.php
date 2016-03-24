@@ -6,19 +6,19 @@
             <div class="form-group">
                 <label class='col-sm-3 control-label' for='old-password'>Old-password :</label>
                 <div class="col-sm-5">
-                    <input type='password' class='form-control' id='old-password' name='old-password' />
+                    <input placeholder='Enter Old-password' type='password' class='form-control' id='old-password' name='old-password' />
                 </div>
             </div>
             <div class="form-group">
                 <label class='col-sm-3 control-label' for='new-password'>New-password :</label>
                 <div class="col-sm-5">
-                    <input type='password' class='form-control' id='new-password' name='new-password' />
+                    <input placeholder='Enter New-password' type='password' class='form-control' id='new-password' name='new-password' />
                 </div>
             </div>
             <div class="form-group">
                 <label class='col-sm-3 control-label' for='confirm-new-password'>Confirm New-password :</label>
                 <div class="col-sm-5">
-                    <input type='password' class='form-control' id='confirm-new-password' name='confirm-new-password' />
+                    <input placeholder='Enter Confirm New-password' type='password' class='form-control' id='confirm-new-password' name='confirm-new-password' />
                 </div>
             </div>
             <div class="form-group">

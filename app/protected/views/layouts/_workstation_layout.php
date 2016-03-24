@@ -13,6 +13,16 @@
             .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover{
                 background-color: #E9EAED;
             }
+            .footer.navbar-header {
+            float: left;
+            padding: 35px;
+            text-align: center;
+            width: 100%;
+            }
+            .footer.navbar-brand {
+                float:none;
+                font-size: 15px;
+            }
         </style>
         <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
         <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
@@ -98,8 +108,15 @@
         </nav>
         <div>
         <?php echo $content; ?>
-    </div>
-
+        </div>
+        <nav class="navbar navbar-default navbar-fixed-bottom" style='background-color: #F5F5F5;'>
+          <div class="container" style='text-align: center;'>
+              <div class="footer navbar-header">
+                     <a class="footer navbar-brand">Copyright &copy; 2016 by Mr.Bankchart Arlai</a><br/>
+                     <a class="footer navbar-brand">Powered by Yii Framework</a>
+              </div>
+          </div>
+        </nav>
     <!-- start: modal logout -->
 
     <div id='logout-modal' class="modal fade" tabindex="-1" role="dialog">

@@ -34,6 +34,7 @@ class ChecklistController extends Controller {
         if(isset($_POST['nickname'])){
             $model = User::model()->findByPk(Yii::app()->user->id);
             $model->nickname = $_POST['nickname'];
+            $model->fullname = $_POST['fullname'];
             $model->save();
             $this->redirect(array('//checklist/account'));
         }else{
