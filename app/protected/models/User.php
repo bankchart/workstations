@@ -20,9 +20,9 @@ class User extends CActiveRecord {
         );
     }
 
-    public function rules(){
+    public function relations(){
         return array(
-            array('username, password', 'required'),
+            'auth' => array(self::BELONGS_TO, 'UserType', 'auth_id')
         );
     }
 }

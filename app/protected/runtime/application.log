@@ -376,3 +376,64 @@ Stack trace:
 REQUEST_URI=/workstations/app/index.php?r=site/signup
 HTTP_REFERER=http://localhost/workstations/app/index.php?
 ---
+2016/03/24 12:23:16 [error] [php] Missing argument 1 for CWebUser::getState(), called in /opt/lampp/htdocs/workstations/app/protected/controllers/SiteController.php on line 31 and defined (/opt/lampp/htdocs/workstations/framework/web/auth/CWebUser.php:572)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): SiteController->runAction()
+#2 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=site/login
+in /opt/lampp/htdocs/workstations/app/protected/controllers/SiteController.php (31)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/03/24 12:54:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pages".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('pages')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('pages')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('site/pages')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=site/pages&view=about
+HTTP_REFERER=http://localhost/workstations/app/index.php
+---
+2016/03/24 12:55:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pages".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('pages')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('pages')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('site/pages')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=site/pages&view=about
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=site/contact
+---
+2016/03/24 12:56:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pages".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('pages')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('pages')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('site/pages')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=site/pages&view=about
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=site/pages&view=about
+---
+2016/03/24 12:56:22 [error] [php] Undefined variable: menu_active (/opt/lampp/htdocs/workstations/app/protected/views/site/pages/about.php:8)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(869): SiteController->renderFile()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /opt/lampp/htdocs/workstations/framework/web/actions/CViewAction.php(140): SiteController->render()
+#3 /opt/lampp/htdocs/workstations/framework/web/actions/CAction.php(76): CViewAction->run()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CViewAction->runWithParams()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): SiteController->runAction()
+#6 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=site/page&view=about
+in /opt/lampp/htdocs/workstations/app/protected/views/site/pages/about.php (8)
+in /opt/lampp/htdocs/workstations/app/index.php (13)

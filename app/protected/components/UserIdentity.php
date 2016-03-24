@@ -30,7 +30,7 @@ class UserIdentity extends CUserIdentity
 		}
 		return !$this->errorCode;
 	}
-	protected function getId(){
+	public function getId(){
 		return $this->_id;
 	}
 }

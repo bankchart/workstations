@@ -11,6 +11,8 @@
                 background-color: #E9EAED;
             }
         </style>
+        <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
+        <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
     </head>
     <body>
         <!-- Fixed navbar -->
@@ -27,14 +29,23 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">Home</a>
+                        <li id='registration' class="active">
+                            <?php if(Yii::app()->user->isGuest): ?>
+                                <a href="index.php">Registration</a>
+                            <?php else: ?>
+                                <a href="index.php">Manage Member</a>
+                            <?php endif; ?>
                         </li>
-                        <li>
-                            <a href="#about">About</a>
+                            <?php if(!Yii::app()->user->isGuest): ?>
+                                <li id='checklist'>
+                                    <a href="index.php?r=checklist/checklistmanagement">Check List</a>
+                                </li>
+                            <?php endif; ?>
+                        <li id='about'>
+                            <a href="index.php?r=site/page&amp;view=about">About</a>
                         </li>
-                        <li>
-                            <a href="#contact">Contact</a>
+                        <li id='contact'>
+                            <a href="index.php?r=site/contact">Contact</a>
                         </li>
                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -52,15 +63,27 @@
                         </li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <form class="navbar-form navbar-left">
+
+                        <?php if(Yii::app()->user->isGuest): ?>
+
+                        <form action='index.php?r=site/login' method='post' class="navbar-form navbar-left">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input name='username-login' type="text" class="form-control" placeholder="Username">
                             </div>
                             <div class='form-group'>
-                                <input type='password' class='form-control' placeholder='Password'>
+                                <input name='password-login' type='password' class='form-control' placeholder='Password'>
                             </div>
                             <button type="submit" class="btn btn-default">Login</button>
                         </form>
+
+                        <?php else: ?>
+
+                        <form action='index.php?r=logout' method='post' class='navbar-form navbar-left'>
+                            <button type="submit" class="btn btn-default">Logout</button>
+                        </form>
+
+                        <?php endif; ?>
+
                         <!-- <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li> -->
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -70,6 +93,5 @@
         <?php echo $content; ?>
     </div>
     </body>
-    <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
-    <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
+
 </html>

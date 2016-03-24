@@ -5,7 +5,8 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
-	 public $layout = '_workstation_layout';
+	public $layout = '_workstation_layout';
+
 	public function actions()
 	{
 		return array(
@@ -13,15 +14,29 @@ class SiteController extends Controller
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor' => 0xF5F5F5,
-				'testLimit' => '0'
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
-			// 'page'=>array(
-			// 	'class'=>'CViewAction',
-			// ),
+			'page'=>array(
+				'class'=>'CViewAction',
+			),
 			'auth' => 'application.controllers.auth.AuthenticateAction'
 		);
+	}
+
+	public function actionLogin(){
+		if(isset($_POST['username-login']) && isset($_POST['password-login'])){
+			$user = new UserIdentity($_POST['username-login'], $_POST['password-login']);
+			if($user->authenticate()){
+				Yii::app()->user->login($user);
+				header('refresh:2;index.php');
+				echo 'Login success......state : ' . Yii::app()->user->getState('authName');
+			}else{
+				$this->redirect(array('index'));
+			}
+		}else{
+			$this->redirect(array('index'));
+		}
 	}
 
 	public function actionSignUp(){
@@ -70,6 +85,8 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		//Yii::app()->session->destroy(); // remove session of captcha for change characters
+		if(!Yii::app()->user->isGuest)
+			$this->redirect(array('//checklist'));
 		$this->render('index');
 	}
 
@@ -92,51 +109,7 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-	/**
-	 * Displays the login page
-	 */
-	public function actionLogin()
-	{
-		$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('contact',array('menu_active'=>'contact'));
 	}
 
 	/**

@@ -1,12 +1,14 @@
-<?php
-/* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name . ' - About';
-$this->breadcrumbs=array(
-	'About',
-);
-?>
-<h1>About</h1>
-
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<div class='container'>
+	<div class='well'>
+		<h1>About</h1>
+		<hr/>
+		Coming soon...
+	</div>
+</div>
+<input type='hidden' id='mene-active' value='about'/>
+<script type='text/javascript'>
+	$(document).ready(function(){
+		$('ul.nav li').removeClass('active');
+		$('#about').addClass('active');
+	});
+</script>
