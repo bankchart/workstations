@@ -118,7 +118,32 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
+	 	$captcha=Yii::app()->getController()->createAction("captcha");
+		$captcha->testLimit = 1;
+		$captcha->validate('', false);
 		$this->render('contact',array('menu_active'=>'contact'));
+	}
+
+	public function actionSendMessageContact(){
+		$result = 'wait';
+		if(isset($_POST['email-contact']) && isset($_POST['fullname-contact']) &&
+			isset($_POST['message-contact']) && isset($_POST['captcha-code-contact'])){
+			$captcha = Yii::app()->getController()->createAction('captcha');
+			$email = trim($_POST['email-contact']);
+			$fullname = trim($_POST['fullname-contact']);
+			$message = trim($_POST['message-contact']);
+			$captchaCodeContact = trim($_POST['captcha-code-contact']);
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				$result = 'incorrect_email';
+			}elseif(strlen($fullname) == 0 || strlen($message) == 0){
+				$result = 'empty_fullname_or_message';
+			}elseif(!$captcha->validate($captchaCodeContact, false)){
+				$result = 'incorrect_captcha_code';
+			}else{
+				$result = 'success';
+			}
+        }
+		$this->redirect(array('contact', 'result' => $result));
 	}
 
 	/**

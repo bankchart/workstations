@@ -1,5 +1,5 @@
 <div class='well'>
-	<h1>About</h1>
+	<h3>About</h3>
 	<hr/>
 	Coming soon...
 </div>

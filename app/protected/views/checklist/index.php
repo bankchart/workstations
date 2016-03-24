@@ -50,5 +50,15 @@
                 </tr>
             </tbody>
         </table>
+    </div><!-- end: table-responsive -->
+    <div class='row'>
+        <div class='col-sm-12'>
+            <div class='pull-right'>
+                <label>page :</label>
+                <select>
+                    <option>1</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>

@@ -23,6 +23,8 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif(!CPasswordHelper::verifyPassword($this->password, $user->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		elseif(intval($user->auth_id) === -1)
+			$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 		else{
 			$this->_id = $user->user_id;
 			$this->setState('authName', $user->auth->auth_name);
