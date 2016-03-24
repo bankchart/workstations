@@ -19,6 +19,12 @@ class User extends CActiveRecord {
             'auth_id' => 'Auth id'
         );
     }
+
+    public function rules(){
+        return array(
+            array('username, password', 'required'),
+        );
+    }
 }
 
 ?>

@@ -12,7 +12,8 @@ class SiteController extends Controller
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
+				'backColor' => 0xF5F5F5,
+				'testLimit' => '0'
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
@@ -25,12 +26,29 @@ class SiteController extends Controller
 
 	public function actionSignUp(){
 		$result = null;
-		if(isset($_POST['username']) || isset($_POST['password'])){
+		$captcha=Yii::app()->getController()->createAction("captcha");
+		$code = $captcha->verifyCode;
+		if((isset($_POST['username']) || isset($_POST['password'])) && $code == $_POST['captcha-code']){
 			if(isset($_POST['username']) && isset($_POST['password'])){
 				$username = trim($_POST['username']);
 				$password = trim($_POST['password']);
-				if(strlen($username) > 6 && strlen($password) > 6){
-
+				$signUpRole = new SignUpValidate; // in components/SignUpValidate.php
+				$lenUsernameRole = $signUpRole->getRoleLenUserName();
+				$lenPasswordRole = $signUpRole->getRoleLenPassWord();
+				if(strlen($username) > $lenUsernameRole && strlen($password) > $lenPasswordRole){
+					if($signUpRole->isDuplicateUserName($username)){
+						$result = array('signUpStatus' => 'failed');
+					}else{
+						Yii::app()->session->destroy(); // for insert duplicate user
+						/* begin: insert new user */
+						$model = new User;
+						$model->username = $username;
+						$model->password = CPasswordHelper::hashPassword($password);
+						$model->auth_id = -1;
+						$model->save();
+						/* end: insert new user */
+						$this->redirect(array('index'));
+					}
 				}else{
 					$result = array('signUpStatus' => 'failed');
 				}
@@ -51,6 +69,7 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		//Yii::app()->session->destroy(); // remove session of captcha for change characters
 		$this->render('index');
 	}
 
