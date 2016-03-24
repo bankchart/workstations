@@ -7,22 +7,28 @@
         <title>Workstations.</title>
         <link rel='stylesheet' href='<?php echo Yii::app()->baseUrl; ?>/bootstrap/css/bootstrap.min.css' />
         <style>
+            html {
+                position: relative;
+                min-height: 100%;
+            }
             body{
                 background-color: #E9EAED;
+                margin-bottom: 120px;
             }
             .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover{
                 background-color: #E9EAED;
             }
-            .footer.navbar-header {
-            float: left;
-            padding: 35px;
-            text-align: center;
-            width: 100%;
+            .footer{
+                color: #424F5A;
+                background-color: #F5F5F5;
+                position: absolute;
+                bottom: 0;
+                padding-top: 28px;
+                font-size: 13px;
+                height: 100px;
+                width: 100%;
             }
-            .footer.navbar-brand {
-                float:none;
-                font-size: 15px;
-            }
+
         </style>
         <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
         <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
@@ -106,41 +112,39 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div>
-        <?php echo $content; ?>
+        <div class='container my-content'>
+            <?php echo $content; ?>
         </div>
-        <nav class="navbar navbar-default navbar-fixed-bottom" style='background-color: #F5F5F5;'>
-          <div class="container" style='text-align: center;'>
-              <div class="footer navbar-header">
-                     <a class="footer navbar-brand">Copyright &copy; 2016 by Mr.Bankchart Arlai</a><br/>
-                     <a class="footer navbar-brand">Powered by Yii Framework</a>
-              </div>
+        <div class="footer">
+          <div style='text-align: center;'>
+             <label>Copyright &copy; 2016 by Mr.Bankchart Arlai</label><br/>
+             <label>
+                 Powered by
+                 <a target='_blank' href='http://www.yiiframework.com/'>Yii Framework</a>
+            </label>
           </div>
-        </nav>
-    <!-- start: modal logout -->
-
-    <div id='logout-modal' class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Workstations : Logout</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Do you really want to logout?&hellip;</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" id='logout-btn-modal' class="btn btn-danger">Logout</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!-- end: modal logout -->
-
+      </div>
     </body>
-
+</html>
+    <!-- start: modal logout -->
+<div id='logout-modal' class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Workstations : Logout</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to logout?&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id='logout-btn-modal' class="btn btn-danger">Logout</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <!-- end: modal logout -->
     <script type='text/javascript'>
         $(document).ready(function(){
             $("#logout-btn-modal").on('click', function(){
@@ -148,5 +152,3 @@
             });
         });
     </script>
-
-</html>

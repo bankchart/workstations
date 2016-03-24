@@ -1,23 +1,23 @@
-<div class='container'>
-    <div class='well'>
-        <h3 style='display: inline;'>Membership management</h3>
-        <hr/>
-        <div class='row'>
-            <div class='col-sm-12'>
-                <label>Show :</label>
-                <select>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>30</option>
-                    <option>50</option>
-                </select>
-                <div class='pull-right'>
-                    <form>
-                        <input title='Search nickname or fullname.' placeholder='Search nickname or fullname.' class='form-control' type='text'/>
-                    </form>
-                </div>
+<div class='well'>
+    <h3 style='display: inline;'>Membership management</h3>
+    <hr/>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <label>Show :</label>
+            <select>
+                <option>10</option>
+                <option>15</option>
+                <option>30</option>
+                <option>50</option>
+            </select>
+            <div class='pull-right'>
+                <form>
+                    <input title='Search nickname or fullname.' placeholder='Search nickname or fullname.' class='form-control' type='text'/>
+                </form>
             </div>
         </div>
+    </div>
+    <div class='table-responsive'>
         <table class="table table-bordered" style='margin-top: 10px;'>
             <thead>
                 <tr>
@@ -50,6 +50,5 @@
                 </tr>
             </tbody>
         </table>
-
     </div>
 </div>

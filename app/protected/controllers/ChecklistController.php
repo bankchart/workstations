@@ -47,6 +47,28 @@ class ChecklistController extends Controller {
             'menu_active' => 'account'
         ));
     }
+
+    public function actionSaveNewPassword(){
+        if(isset($_POST['old-password']) && isset($_POST['new-password']) && isset($_POST['confirm-new-password'])){
+            $oldPass = trim($_POST['old-password']);
+            $newPass = trim($_POST['new-password']);
+            $cNewPass = trim($_POST['confirm-new-password']);
+            $model = User::model()->findByPk(Yii::app()->user->id);
+            $signUpRole = new SignUpValidate;
+            if(!CPasswordHelper::verifyPassword($oldPass, $model->password)){
+                $this->redirect(array('changepasswordform', 'result' => 'failed'));
+            }elseif($newPass != $cNewPass || strlen($newPass) < $signUpRole->getRoleLenPassWord()){
+                $this->redirect(array('changepasswordform', 'result' => 'failed'));
+            }else{
+                $tempPass = CPasswordHelper::hashPassword($newPass);
+                $model->password = $tempPass;
+                $model->save();
+                $this->redirect(array('changepasswordform', 'result' => 'success'));
+            }
+        }else{
+            $this->redirect(array('changepasswordform'));
+        }
+    }
 }
 
 ?>
