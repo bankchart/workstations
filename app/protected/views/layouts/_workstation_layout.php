@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Workstations.</title>
         <link rel='stylesheet' href='<?php echo Yii::app()->baseUrl; ?>/bootstrap/css/bootstrap.min.css' />
-        <link rel='stylesheet' >
+        <style>
+            body{
+                background-color: #E9EAED;
+            }
+        </style>
     </head>
     <body>
         <!-- Fixed navbar -->
@@ -57,7 +61,6 @@
                             </div>
                             <button type="submit" class="btn btn-default">Login</button>
                         </form>
-                        <li><a href="#">Register</a></li>
                         <!-- <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li> -->
                     </ul>
                 </div><!--/.nav-collapse -->
