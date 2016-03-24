@@ -24,7 +24,23 @@ class SiteController extends Controller
 	}
 
 	public function actionSignUp(){
-		echo 'sign up.';
+		$result = null;
+		if(isset($_POST['username']) || isset($_POST['password'])){
+			if(isset($_POST['username']) && isset($_POST['password'])){
+				$username = trim($_POST['username']);
+				$password = trim($_POST['password']);
+				if(strlen($username) > 6 && strlen($password) > 6){
+
+				}else{
+					$result = array('signUpStatus' => 'failed');
+				}
+			}else{
+				$result = array('signUpStatus' => 'failed');
+			}
+		}else{
+			$result = array('signUpStatus' => 'failed');
+		}
+		$this->render('index', $result);
 	}
 
 	/**
