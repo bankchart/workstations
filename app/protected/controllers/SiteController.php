@@ -5,6 +5,7 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
+	 public $layout = '_workstation_layout';
 	public function actions()
 	{
 		return array(
@@ -15,9 +16,10 @@ class SiteController extends Controller
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
-			'page'=>array(
-				'class'=>'CViewAction',
-			),
+			// 'page'=>array(
+			// 	'class'=>'CViewAction',
+			// ),
+			'auth' => 'application.controllers.auth.AuthenticateAction'
 		);
 	}
 
