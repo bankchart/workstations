@@ -10,6 +10,9 @@
             body{
                 background-color: #E9EAED;
             }
+            .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover{
+                background-color: #E9EAED;
+            }
         </style>
         <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
         <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
@@ -32,7 +35,7 @@
                         <li id='registration' class="active">
                             <?php if(Yii::app()->user->isGuest): ?>
                                 <a href="index.php">Registration</a>
-                            <?php else: ?>
+                            <?php elseif(Yii::app()->user->isAdmin()): ?>
                                 <a href="index.php">Manage Member</a>
                             <?php endif; ?>
                         </li>
@@ -63,23 +66,27 @@
                         </li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-
+                        <?php if(!Yii::app()->user->isGuest): ?>
+                            <li id='account'>
+                                <a href="index.php?r=checklist/account">Account</a>
+                            </li>
+                        <?php endif; ?>
                         <?php if(Yii::app()->user->isGuest): ?>
 
-                        <form action='index.php?r=site/login' method='post' class="navbar-form navbar-left">
+                        <form id='login-form' action='index.php?r=site/login' method='post' class="navbar-form navbar-left">
                             <div class="form-group">
                                 <input name='username-login' type="text" class="form-control" placeholder="Username">
                             </div>
                             <div class='form-group'>
                                 <input name='password-login' type='password' class='form-control' placeholder='Password'>
                             </div>
-                            <button type="submit" class="btn btn-default">Login</button>
+                            <button type='submit' class="btn btn-primary">Login</button>
                         </form>
 
                         <?php else: ?>
 
-                        <form action='index.php?r=logout' method='post' class='navbar-form navbar-left'>
-                            <button type="submit" class="btn btn-default">Logout</button>
+                        <form id='logout-form' action='index.php?r=logout' method='post' class='navbar-form navbar-left'>
+                            <button data-toggle='modal' data-target='#logout-modal' type="button" class="btn btn-warning">Logout</button>
                         </form>
 
                         <?php endif; ?>
@@ -92,6 +99,37 @@
         <div>
         <?php echo $content; ?>
     </div>
+
+    <!-- start: modal logout -->
+
+    <div id='logout-modal' class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Workstations : Logout</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to logout?&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id='logout-btn-modal' class="btn btn-danger">Logout</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- end: modal logout -->
+
     </body>
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $("#logout-btn-modal").on('click', function(){
+                $('#logout-form').submit();
+            });
+        });
+    </script>
 
 </html>

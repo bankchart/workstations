@@ -7,6 +7,11 @@ class SiteController extends Controller
 	 */
 	public $layout = '_workstation_layout';
 
+	public function actionTest(){
+		$model = User::model()->findByPk(1);
+		echo 'auth_id : ' . $model->auth_id;
+	}
+
 	public function actions()
 	{
 		return array(
@@ -60,6 +65,7 @@ class SiteController extends Controller
 						$model->username = $username;
 						$model->password = CPasswordHelper::hashPassword($password);
 						$model->auth_id = -1;
+						$model->ninckname = 'your nickname';
 						$model->save();
 						/* end: insert new user */
 						$this->redirect(array('index'));
@@ -73,6 +79,8 @@ class SiteController extends Controller
 		}else{
 			$result = array('signUpStatus' => 'failed');
 		}
+		if($result['signUpStatus'] == 'failed')
+			Yii::app()->session->destroy();
 		$this->render('index', $result);
 	}
 

@@ -16,7 +16,7 @@ class WebUser extends CWebUser {
 
     protected function loadUser($id = null){
         if($this->_model === null){
-            $_model = User::model()->findByPk($id);
+            $this->_model = User::model()->findByPk($id);
         }
         return $this->_model;
     }

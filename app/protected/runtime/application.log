@@ -437,3 +437,148 @@ Stack trace:
 REQUEST_URI=/workstations/app/index.php?r=site/page&view=about
 in /opt/lampp/htdocs/workstations/app/protected/views/site/pages/about.php (8)
 in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/03/24 14:11:30 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/workstations/app/protected/components/WebUser.php:9)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CBaseController.php(95): ChecklistController->renderInternal()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(784): ChecklistController->renderFile()
+#2 /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php(13): ChecklistController->render()
+#3 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): ChecklistController->actionIndex()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#6 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#8 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist
+in /opt/lampp/htdocs/workstations/app/protected/components/WebUser.php (9)
+in /opt/lampp/htdocs/workstations/app/protected/views/layouts/_workstation_layout.php (35)
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (13)
+2016/03/24 14:18:57 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/workstations/app/protected/components/WebUser.php:9)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CBaseController.php(95): ChecklistController->renderInternal()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(784): ChecklistController->renderFile()
+#2 /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php(13): ChecklistController->render()
+#3 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): ChecklistController->actionIndex()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#6 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#8 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist
+in /opt/lampp/htdocs/workstations/app/protected/components/WebUser.php (9)
+in /opt/lampp/htdocs/workstations/app/protected/views/layouts/_workstation_layout.php (35)
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (13)
+2016/03/24 14:21:10 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/workstations/app/protected/components/WebUser.php:9)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CBaseController.php(95): ChecklistController->renderInternal()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(784): ChecklistController->renderFile()
+#2 /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php(13): ChecklistController->render()
+#3 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): ChecklistController->actionIndex()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#6 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#8 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist
+in /opt/lampp/htdocs/workstations/app/protected/components/WebUser.php (9)
+in /opt/lampp/htdocs/workstations/app/protected/views/layouts/_workstation_layout.php (35)
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (13)
+2016/03/24 14:21:49 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/workstations/app/protected/components/WebUser.php:9)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CBaseController.php(95): ChecklistController->renderInternal()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(784): ChecklistController->renderFile()
+#2 /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php(13): ChecklistController->render()
+#3 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): ChecklistController->actionIndex()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#6 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#8 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist
+in /opt/lampp/htdocs/workstations/app/protected/components/WebUser.php (9)
+in /opt/lampp/htdocs/workstations/app/protected/views/layouts/_workstation_layout.php (35)
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (13)
+2016/03/24 14:34:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "account".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('account')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('account')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('site/account')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=site/account
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist
+---
+2016/03/24 14:36:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3ed425a943
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---
+2016/03/24 14:36:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3ed425a943
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---
+2016/03/24 14:37:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3ed9ca8563
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---
+2016/03/24 14:37:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3ed9ca8563
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---
+2016/03/24 14:37:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3eda4a0efb
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---
+2016/03/24 14:37:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "captcha".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('captcha')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('captcha')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/captc...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/captcha&v=56f3eda4a0efb
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/account
+---

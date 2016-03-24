@@ -16,6 +16,7 @@ class User extends CActiveRecord {
             'username' => 'Username',
             'password' => 'Password',
             'fullname' => 'Fullname',
+            'nickname' => 'Nick name',
             'auth_id' => 'Auth id'
         );
     }
