@@ -36,6 +36,8 @@ class ChecklistController extends Controller {
             $model->nickname = $_POST['nickname'];
             $model->save();
             $this->redirect(array('//checklist/account'));
+        }else{
+            $this->redirect(array('index'));
         }
     }
 
