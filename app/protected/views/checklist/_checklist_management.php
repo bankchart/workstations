@@ -23,7 +23,7 @@
             <thead>
                 <tr>
                     <th style='width: 20px;'>
-                        <input type='checkbox'/>
+                        <input type='checkbox' class='all-checkbox-tb'/>
                     </th>
                     <th style='width: 20px;'>#</th>
                     <th>Topic name</th>
@@ -35,7 +35,55 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type='checkbox'/>
+                        <input type='checkbox' class='checkbox-tb'/>
+                    </td>
+                    <td>1</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>
+                        <select>
+                            <option>choose</option>
+                            <option>Complete</option>
+                            <option>Cancel</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' class='checkbox-tb'/>
+                    </td>
+                    <td>1</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>
+                        <select>
+                            <option>choose</option>
+                            <option>Complete</option>
+                            <option>Cancel</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' class='checkbox-tb'/>
+                    </td>
+                    <td>1</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>111111</td>
+                    <td>
+                        <select>
+                            <option>choose</option>
+                            <option>Complete</option>
+                            <option>Cancel</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type='checkbox' class='checkbox-tb'/>
                     </td>
                     <td>1</td>
                     <td>111111</td>
@@ -70,3 +118,4 @@
 		$('#checklist').addClass('active');
 	});
 </script>
+<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-tb.js'></script>
