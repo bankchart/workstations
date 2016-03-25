@@ -9,16 +9,30 @@ class ChecklistController extends Controller {
         }
     }
 
-    public function actionIndex(){
+    public function actionIndex(){ // is admin -> redirect to manage-member
         if(Yii::app()->user->isAdmin())
             $this->render('index');
         else
             $this->redirect(array('//checklist/checklistmanagement'));
     }
-    public function actionChecklistManagement(){
+
+    public function actionManageMemberAjax(){
+        if(Yii::app()->user->isAdmin()){
+            //coding...
+        }
+    }
+
+
+    public function actionChecklistManagement(){ // manage-checklist
         $this->render('_checklist_management', array(
             'menu_active' => 'checklist-management'
         ));
+    }
+
+    public function actionChecklistManagementAjax(){
+        if(!Yii::app()->user->isGuest){
+            //coding...
+        }
     }
 
     public function actionAccount(){
