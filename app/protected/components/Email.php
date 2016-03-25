@@ -40,8 +40,8 @@ class Email {
         // บัญชี Gmail
         $mail->Host = 'mx1.hostinger.in.th'; // gmail server
         $mail->Port = '465'; // port number
-        $mail->Username = 'bankchart@bank-projecttest.com'; // User Email
-        $mail->Password = 'crv1990'; // Pass Email
+        $mail->Username = '...'; // User Email
+        $mail->Password = '...'; // Pass Email
 
         // รูปแบบ Mail
         $mail->CharSet = 'utf-8';
