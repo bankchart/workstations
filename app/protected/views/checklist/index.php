@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                     <th style='width: 20px;'>
-                        <input type='checkbox'/>
+                        <input type='checkbox' class='all-checkbox-tb'/>
                     </th>
                     <th style='width: 20px;'>#</th>
                     <th>Nickname</th>
@@ -34,7 +34,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type='checkbox'/>
+                        <input type='checkbox' class='checkbox-tb'/>
                     </td>
                     <td>1</td>
                     <td>111111</td>
@@ -62,3 +62,4 @@
         </div>
     </div>
 </div>
+<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-tb.js'></script>
