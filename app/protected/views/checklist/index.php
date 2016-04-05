@@ -5,10 +5,10 @@
         <div class='col-sm-12'>
             <label>Show :</label>
             <select id='records-per-table'>
-                <option value='10'>10</option>
-                <option value='15'>15</option>
-                <option value='30'>30</option>
-                <option value='50'>50</option>
+                <?php
+                    foreach(Yii::app()->params['defaultPerPageTable'] as $value)
+                        echo "<option value='$value'>$value</option>";
+                ?>
             </select>
             <div class='pull-right'>
                 <form id='search-name-form' action='#'>
@@ -61,8 +61,10 @@
             <div class='pull-right'>
                 <label>page :</label>
                 <select id='records-in-page'>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
+                    <?php
+                        for($i=1;$i<=$pages;$i++)
+                            echo "<option value='$i'>$i</option>";
+                    ?>
                 </select>
             </div>
         </div>

@@ -10,15 +10,53 @@ class ChecklistController extends Controller {
     }
 
     public function actionIndex(){ // is admin -> redirect to manage-member
-        if(Yii::app()->user->isAdmin())
-            $this->render('index');
-        else
+        if(Yii::app()->user->isAdmin()){
+            $userModel = User::model()->findAll();
+            $countUser = count($userModel);
+            $defaultRecordsPerPage = Yii::app()->params['defaultPerPageTable'][0];
+            $pages = ($countUser%$defaultRecordsPerPage == 0) ?
+                        $countUser/$defaultRecordsPerPage :
+                        floor($countUser/$defaultRecordsPerPage) + 1;
+            $this->render('index', array(
+                'pages' => $pages,
+
+            ));
+        }else
             $this->redirect(array('//checklist/checklistmanagement'));
     }
 
     public function actionManageMemberAjax(){
         if(Yii::app()->user->isAdmin()){
-            echo $this->renderPartial('_manage-member-ajax');
+            $searchName = $_POST['search-mem-name'];
+            $limit = $_POST['records'];
+            $offset = $_POST['page'] > 1 ? $limit*$_POST['page'] - $limit : 0;
+            $model = User::model()->findAll(array(
+                'limit' => $limit,
+                'offset' => $offset
+            ));
+            $countModel = User::model()->findAll();
+            $count = count($countModel);
+            $defaultRecordsPerPage = $limit;
+            $pages = 1;
+            $temp = $count/$defaultRecordsPerPage;
+            if($count > $defaultRecordsPerPage)
+                $pages = strrpos($temp, '.') ? floor($temp) + 1 : $temp;
+            $pageHtml = '';
+            for($i=1;$i<=$pages;$i++){
+                $selected = $_POST['page'] == $i ? 'selected' : '';
+                $pageHtml .= "<option $selected value='$i'>$i</option>";
+            }
+            echo CJSON::encode(array(
+                    'tbody_member' => $this->renderPartial('_manage-member-ajax', array(
+                                    'model' => $model,
+                                    'offset' => $offset + 1
+                                ), true
+                    ),
+                    'page_dropdown_list_html' => $pageHtml,
+                    'pages' => $pages,
+                    'temp' => $temp
+                )
+            );
         }
     }
 

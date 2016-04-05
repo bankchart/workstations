@@ -12,8 +12,10 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$model = User::model()->findByPk(1);
-		echo 'auth_id : ' . $model->auth_id;
+		// $model = User::model()->findByPk(1);
+		// echo 'auth_id : ' . $model->auth_id;
+		$i = 7%10;
+		echo " 7%10 : " . $i;
 	}
 
 	public function actions()

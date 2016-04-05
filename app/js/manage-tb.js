@@ -18,18 +18,30 @@ $(document).ready(function(){
             $('.all-checkbox-tb').prop('checked', false);
     });
 
-    $('#records-per-table, #records-in-page')
-    .on('change', function(){getMemberBodyTable(
-                                            body_table_id, records_per_table,
-                                            records_in_page, search_mem_name, 0);
-                                        });
+    $('#records-per-table')
+    .on('change', function(){
+        search_mem_name.val('');
+        records_in_page.val(1);
+        getMemberBodyTable(
+                body_table_id, records_per_table,
+                records_in_page, search_mem_name, 0);
+        });
+
+    $('#records-in-page')
+    .on('change', function(){
+        search_mem_name.val('');
+        getMemberBodyTable(
+                body_table_id, records_per_table,
+                records_in_page, search_mem_name, 0);
+        });
+
     $(search_name_form).on('submit', function(){
         getMemberBodyTable(body_table_id, records_per_table,
                         records_in_page, search_mem_name, 0);
         return false;
     });
 
-    function getMemberBodyTable(id, records, page, mem_name, delay=2000){
+    function getMemberBodyTable(id, records, page, mem_name, delay=700){
         console.log(mem_name.val());
         setTimeout(function(){
             $.ajax({
@@ -40,8 +52,11 @@ $(document).ready(function(){
                     'page' : page.val(),
                     'search-mem-name' : mem_name.val()
                 },
+                dataType: 'json',
                 success: function(data){
-                    id.html(data);
+                    id.html(data.tbody_member);
+                    page.html(data.page_dropdown_list_html)
+                    console.table(data);
                 }
             });
         }, delay);
