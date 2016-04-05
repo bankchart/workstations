@@ -4,15 +4,17 @@
     <div class='row'>
         <div class='col-sm-12'>
             <label>Show :</label>
-            <select>
-                <option>10</option>
-                <option>15</option>
-                <option>30</option>
-                <option>50</option>
+            <select id='records-per-table'>
+                <option value='10'>10</option>
+                <option value='15'>15</option>
+                <option value='30'>30</option>
+                <option value='50'>50</option>
             </select>
             <div class='pull-right'>
-                <form>
-                    <input title='Search nickname or fullname.' placeholder='Search nickname or fullname.' class='form-control' type='text'/>
+                <form id='search-name-form' action='#'>
+                    <input title='Search nickname or fullname.' name='search-mem-name'
+                        id='search-mem-name' placeholder='Search nickname or fullname.'
+                        class='form-control' type='text'/>
                 </form>
             </div>
         </div>
@@ -31,8 +33,8 @@
                     <th>Manage</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id='member-body-table'>
+                <!--tr>
                     <td>
                         <input type='checkbox' class='checkbox-tb'/>
                     </td>
@@ -47,6 +49,9 @@
                             <option>Ban</option>
                         </select>
                     </td>
+                </tr-->
+                <tr>
+                        <td colspan='6' style='text-align: center;'>loading...</td>
                 </tr>
             </tbody>
         </table>
@@ -55,8 +60,9 @@
         <div class='col-sm-12'>
             <div class='pull-right'>
                 <label>page :</label>
-                <select>
-                    <option>1</option>
+                <select id='records-in-page'>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
                 </select>
             </div>
         </div>

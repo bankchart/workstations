@@ -18,7 +18,7 @@ class ChecklistController extends Controller {
 
     public function actionManageMemberAjax(){
         if(Yii::app()->user->isAdmin()){
-            //coding...
+            echo $this->renderPartial('_manage-member-ajax');
         }
     }
 
@@ -31,7 +31,7 @@ class ChecklistController extends Controller {
 
     public function actionChecklistManagementAjax(){
         if(!Yii::app()->user->isGuest){
-            //coding...
+            echo 'loaded.';
         }
     }
 

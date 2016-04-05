@@ -7,6 +7,10 @@ class SiteController extends Controller
 	 */
 	public $layout = '_workstation_layout';
 
+	public function actionGetPassword(){
+		echo CPasswordHelper::hashPassword(123456);
+	}
+
 	public function actionTest(){
 		$model = User::model()->findByPk(1);
 		echo 'auth_id : ' . $model->auth_id;
