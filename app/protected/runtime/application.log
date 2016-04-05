@@ -918,3 +918,58 @@ Stack trace:
 REQUEST_URI=/workstations/app/index.php?r=checklist/managememberperformajax
 HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist
 ---
+2016/04/06 00:27:31 [error] [php] Undefined index: search-mem-name (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:30)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (30)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/06 00:27:38 [error] [php] Undefined index: search-mem-name (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:30)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (30)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/06 00:27:44 [error] [php] Undefined index: search-mem-name (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:30)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (30)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/06 00:28:16 [error] [php] Undefined index: search-mem-name (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:30)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (30)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/06 00:28:26 [error] [php] Undefined index: search-mem-name (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:30)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (30)
+in /opt/lampp/htdocs/workstations/app/index.php (13)

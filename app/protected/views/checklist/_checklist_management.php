@@ -6,10 +6,10 @@
         <div class='col-sm-12'>
             <label>Show :</label>
             <select>
-                <option>10</option>
-                <option>15</option>
-                <option>30</option>
-                <option>50</option>
+                <?php
+                    foreach(Yii::app()->params['defaultPerPageTable'] as $n)
+                        echo "<option value='$n'>$n</option>";                    
+                ?>
             </select>
             <div class='pull-right'>
                 <form>

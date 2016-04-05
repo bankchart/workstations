@@ -27,6 +27,8 @@ class ChecklistController extends Controller {
 
     public function actionManageMemberAjax(){
         if(Yii::app()->user->isAdmin()){
+            if(empty($_POST))
+                exit;
             $searchName = $_POST['search-mem-name'];
             $limit = $_POST['records'];
             $offset = $_POST['page'] > 1 ? $limit*$_POST['page'] - $limit : 0;

@@ -68,6 +68,15 @@ $(document).ready(function(){
         });
     });
 
+    $('body').on('change', '.manage-user', function(){
+        var id = (this.id).split('-')[0];
+        var perform = this.options[this.selectedIndex].text;
+        var nickname = $('#'+id+'-nickname-field').html();
+        var message = 'Do you want to <u>' + perform + ' ' + nickname + '</u> ?';
+        $('#message-alert').html(message);
+        $('#modal-alert').modal();
+    });
+
     function getMemberBodyTable(id, records, page, mem_name, delay=700){
         setTimeout(function(){
             $.ajax({
