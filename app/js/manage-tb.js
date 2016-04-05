@@ -5,6 +5,7 @@ $(document).ready(function(){
     var records_in_page = $('#records-in-page');
     var search_mem_name = $('#search-mem-name');
     var search_name_form = $('#search-name-form');
+    var checkbox_tb = $('.checkbox-tb');
 
     getMemberBodyTable(body_table_id, records_per_table,
         records_in_page, search_mem_name);
@@ -35,14 +36,21 @@ $(document).ready(function(){
                 records_in_page, search_mem_name, 0);
         });
 
+    $('body').on('click', '.checkbox-tb', function(){ // it's ok.
+        var id = this.id;
+        var isCheck = $(this).prop('checked');
+        $('#test').html('id : ' + id + ', isChecked : ' + isCheck);
+    });
+
     $(search_name_form).on('submit', function(){
         getMemberBodyTable(body_table_id, records_per_table,
                         records_in_page, search_mem_name, 0);
         return false;
     });
 
+
+
     function getMemberBodyTable(id, records, page, mem_name, delay=700){
-        console.log(mem_name.val());
         setTimeout(function(){
             $.ajax({
                 url: 'index.php?r=checklist/managememberajax',
@@ -56,7 +64,6 @@ $(document).ready(function(){
                 success: function(data){
                     id.html(data.tbody_member);
                     page.html(data.page_dropdown_list_html)
-                    console.table(data);
                 }
             });
         }, delay);

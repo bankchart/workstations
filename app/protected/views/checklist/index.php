@@ -27,9 +27,9 @@
                         <input type='checkbox' class='all-checkbox-tb'/>
                     </th>
                     <th style='width: 20px;'>#</th>
-                    <th>Nickname</th>
-                    <th>Fullname</th>
-                    <th>SignUp Date</th>
+                    <th><?=User::model()->attributeLabels()['nickname']?></th>
+                    <th><?=User::model()->attributeLabels()['fullname']?></th>
+                    <th><?=User::model()->attributeLabels()['signup']?></th>
                     <th>Manage</th>
                 </tr>
             </thead>
