@@ -32,9 +32,12 @@ class ChecklistController extends Controller {
             $offset = $_POST['page'] > 1 ? $limit*$_POST['page'] - $limit : 0;
             $model = User::model()->findAll(array(
                 'limit' => $limit,
-                'offset' => $offset
+                'offset' => $offset,
+                'condition' => 'auth_id != 1 '
             ));
-            $countModel = User::model()->findAll();
+            $countModel = User::model()->findAll(array(
+                'condition' => 'auth_id != 1'
+            ));
             $count = count($countModel);
             $defaultRecordsPerPage = $limit;
             $pages = 1;
@@ -60,6 +63,14 @@ class ChecklistController extends Controller {
         }
     }
 
+    public function actionManageMemberPerformAjax(){
+        if(Yii::app()->user->isAdmin()){
+            echo CJSON::encode(array(
+                'objectPerform' => 'test-objectPerform',
+                'message' => 'test-message'
+            ));
+        }
+    }
 
     public function actionChecklistManagement(){ // manage-checklist
         $this->render('_checklist_management', array(

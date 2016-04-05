@@ -891,3 +891,30 @@ Stack trace:
 REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
 in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (32)
 in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/05 23:07:13 [error] [php] Undefined offset: 1 (/opt/lampp/htdocs/workstations/app/protected/views/checklist/_manage-member-ajax.php:21)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(869): ChecklistController->renderFile()
+#1 /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php(55): ChecklistController->renderPartial()
+#2 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): ChecklistController->actionManageMemberAjax()
+#3 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#6 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberajax
+in /opt/lampp/htdocs/workstations/app/protected/views/checklist/_manage-member-ajax.php (21)
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (55)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/05 23:27:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "managememberperformajax".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('managememberper...')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('managememberper...')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/manag...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/managememberperformajax
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist
+---

@@ -6,6 +6,7 @@ $(document).ready(function(){
     var search_mem_name = $('#search-mem-name');
     var search_name_form = $('#search-name-form');
     var checkbox_tb = $('.checkbox-tb');
+    var manage_user_ddl = $('.manage-user');
 
     getMemberBodyTable(body_table_id, records_per_table,
         records_in_page, search_mem_name);
@@ -48,7 +49,24 @@ $(document).ready(function(){
         return false;
     });
 
-
+    $('body').on('change', '.manage-user', function(){
+        var id = this.id;
+        var value = $(this).val();
+        $.ajax({
+            url: 'index.php?r=checklist/managememberperformajax',
+            type: 'post',
+            data: {
+                id: id,
+                value: value
+            },
+            dataType: 'json',
+            success: function(data){
+                var objectPerform = data.objectPerform;
+                var message = data.message;
+                console.table(data);
+            }
+        });
+    });
 
     function getMemberBodyTable(id, records, page, mem_name, delay=700){
         setTimeout(function(){

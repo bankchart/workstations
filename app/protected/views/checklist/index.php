@@ -58,6 +58,9 @@
     </div><!-- end: table-responsive -->
     <div class='row'>
         <div class='col-sm-12'>
+            <button id='allow-btn'>allow</button>
+            <button id='remove-btn'>remove</button>
+            <button id='ban-btn'>ban</button>
             <div class='pull-right'>
                 <label>page :</label>
                 <select id='records-in-page'>
@@ -70,4 +73,7 @@
         </div>
     </div>
 </div>
+<!-- message modal -->
+
+<!-- message modal -->
 <script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-tb.js'></script>
