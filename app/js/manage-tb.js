@@ -26,7 +26,7 @@ $(document).ready(function(){
         records_in_page.val(1);
         getMemberBodyTable(
                 body_table_id, records_per_table,
-                records_in_page, search_mem_name, 0);
+                records_in_page, search_mem_name);
         });
 
     $('#records-in-page')
@@ -34,7 +34,7 @@ $(document).ready(function(){
         search_mem_name.val('');
         getMemberBodyTable(
                 body_table_id, records_per_table,
-                records_in_page, search_mem_name, 0);
+                records_in_page, search_mem_name);
         });
 
     $('body').on('click', '.checkbox-tb', function(){ // it's ok.
@@ -45,7 +45,7 @@ $(document).ready(function(){
 
     $(search_name_form).on('submit', function(){
         getMemberBodyTable(body_table_id, records_per_table,
-                        records_in_page, search_mem_name, 0);
+                        records_in_page, search_mem_name);
         return false;
     });
 
@@ -78,6 +78,8 @@ $(document).ready(function(){
     });
 
     function getMemberBodyTable(id, records, page, mem_name, delay=700){
+        var defaultHtml = "<td style='text-align: center;' colspan='6'>loading...</td>";
+        id.html(defaultHtml);
         setTimeout(function(){
             $.ajax({
                 url: 'index.php?r=checklist/managememberajax',

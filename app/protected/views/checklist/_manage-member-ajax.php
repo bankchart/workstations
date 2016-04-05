@@ -14,7 +14,7 @@
                 <td>$record->signup</td>
                 <td>
                     <select id='$record->user_id-manage-user' class='manage-user'>
-                        <option value='-1'>--choose--</option>
+                        <option value='-1'>--newbie member--</option>
                         <option $selected[0] value='allow'>allow</option>
                         <option value='remove'>remove</option>
                         <option $selected[1] value='ban'>ban</option>
