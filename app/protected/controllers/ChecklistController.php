@@ -22,14 +22,14 @@ class ChecklistController extends Controller {
     public function actionChecklistManagementAjax(){
         if($_POST){
             $user_id = Yii::app()->user->id;
-            $searchTopic = trim($_POST['search-topic-name']);
+            $searchTopic = addslashes(trim($_POST['search-topic-name']));
             $limit = $_POST['records-per-page'];
             $offset = $_POST['page']*$limit - $limit;
             $checklistCriteria = new CDbCriteria;
             $checklistCriteria->condition = "user_id <> :user_id";
             $checklistCriteria->params = array(':user_id' => $user_id);
             $checklistModel = Checklist::model()->findAll($checklistCriteria);
-            echo CJSON::encode($checklistMode);
+            echo CJSON::encode($checklistModel);
         }
     }
 }

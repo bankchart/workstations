@@ -28,7 +28,7 @@ class UserAuthController extends Controller {
         if(Yii::app()->user->isAdmin()){
             if(empty($_POST))
                 exit;
-            $searchName = trim($_POST['search-mem-name']);
+            $searchName = addslashes(trim($_POST['search-mem-name']));
             $conditionSearchName = $searchName != '' ?
                 "AND (nickname LIKE '%$searchName%' OR fullname LIKE '%$searchName%')" : '';
             $limit = $_POST['records'];

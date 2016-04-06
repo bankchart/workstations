@@ -99,4 +99,4 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- message modal (multiple user-authority ajax) -->
-<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-tb.js?v=1'></script>
+<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-member.js?v=1'></script>

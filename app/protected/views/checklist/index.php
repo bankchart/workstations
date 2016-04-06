@@ -5,16 +5,17 @@
     <div class='row'>
         <div class='col-sm-12'>
             <label>Show :</label>
-            <select id='records-per-page' name='records-per-page'>
+            <select id='records-per-table' name='records-per-page'>
                 <?php
                     foreach(Yii::app()->params['defaultPerPageTable'] as $n)
                         echo "<option value='$n'>$n</option>";
                 ?>
             </select>
             <div class='pull-right'>
-                <form>
+                <form id='search-topic-form' name='search-topic-form' action='#' method='post'>
                     <input title='Search topic name.' placeholder='Search topic name.'
-                        name='search-topic-name' id='search-topic-name' class='form-control' type='text'/>
+                        name='search-topic-name' id='search-topic-name' class='form-control'
+                        type='text'/>
                 </form>
             </div>
         </div>
@@ -44,7 +45,7 @@
             <button class='btn btn-default' id='cancel-checklist-btn'>cancel</button>
             <div class='pull-right'>
                 <label>page :</label>
-                <select id='page' name='page'>
+                <select id='records-in-page' name='records-in-page'>
                     <option value='1'>1</option>
                 </select>
             </div>
@@ -65,17 +66,20 @@
                 <form id='add-checklist-form' name='add-checklist-form' action='#' method='post'>
                     <div class="form-group">
                         <label for="topic-cl">Topic :</label>
-                        <input type="email" class="form-control"
-                            id="topic-cl" placeholder="Enter your topic"/>
+                        <input type="text" class="form-control"
+                            id="topic-cl" name='topic-cl' placeholder="Enter your topic"/>
                     </div>
                     <div class="form-group">
                         <label for="detail-cl">Detail :</label>
-                        <textarea rows='5' id='detail-cl' placeholder='Enter your detail'
+                        <textarea rows='5' id='detail-cl'
+                            name='detail-cl' placeholder='Enter your detail'
                             class='form-control'></textarea>
                     </div>
                     <div class="form-group">
                         <label for="deadline-cl">Deadline :</label><br/>
-                        <input id="deadline-cl" placeholder='Choose datetime' class='form-control' type="text" >
+                        <input id="deadline-cl" name='deadline-cl'
+                                placeholder='Choose datetime' class='form-control'
+                                type="text" >
                     </div>
                 </form>
             </div>

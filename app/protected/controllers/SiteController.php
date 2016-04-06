@@ -55,9 +55,9 @@ class SiteController extends Controller
 		$code = $captcha->verifyCode;
 		if((isset($_POST['username']) || isset($_POST['password'])) && $code == $_POST['captcha-code']){
 			if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm-password'])){
-				$username = trim($_POST['username']);
-				$password = trim($_POST['password']);
-				$confirmPassword = trim($_POST['confirm-password']);
+				$username = addslashes(trim($_POST['username']));
+				$password = addslashes(trim($_POST['password']));
+				$confirmPassword = addslashes(trim($_POST['confirm-password']));
 				$signUpRole = new SignUpValidate; // in components/SignUpValidate.php
 				$lenUsernameRole = $signUpRole->getRoleLenUserName();
 				$lenPasswordRole = $signUpRole->getRoleLenPassWord();

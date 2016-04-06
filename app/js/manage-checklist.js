@@ -13,6 +13,15 @@ $(document).ready(function(){
         // }
     });
 
+    var body_table_id = $('#checklist-body-table');
+    var records_per_table = $('#records-per-table');
+    var records_in_page = $('#records-in-page');
+    var search_topic_name = $('#search-topic-name');
+    var search_topic_form = $('#search-topic-form');
+
+    getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
+                            search_topic_name);
+
     $('#add-checklist-btn').on('click', function(){
         $('#add-checklist-modal').modal();
     });
@@ -35,9 +44,9 @@ $(document).ready(function(){
                 },
                 dataType: 'json',
                 success: function(data){
-                    id.html(data.tbody_member);
-                    page.html(data.page_dropdown_list_html);
-                    $('.all-checkbox-tb').prop('checked', false);
+                    // id.html(data.tbody_member);
+                    // page.html(data.page_dropdown_list_html);
+                    // $('.all-checkbox-tb').prop('checked', false);
                 }
             });
         }, delay);
