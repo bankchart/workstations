@@ -6,6 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Workstations.</title>
         <link rel='stylesheet' href='<?php echo Yii::app()->baseUrl; ?>/bootstrap/css/bootstrap.min.css' />
+        <?php
+            $controllerChk = Yii::app()->controller->id;
+            $actionChk = Yii::app()->controller->action->id;
+            $dateTimePickerPath = Yii::app()->request->baseUrl .
+                '/js/datetimepicker-master';
+            if(strtolower($controllerChk) === 'checklist' &&
+                strtolower($actionChk) === 'checklistmanagement')
+                    echo "<link rel='stylesheet'
+                        href='$dateTimePickerPath/jquery.datetimepicker.css' />";
+        ?>
         <style>
             html {
                 position: relative;
@@ -32,6 +42,11 @@
         </style>
         <script type='text/javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"></script>
         <script type='text/javascript' src='<?php echo Yii::app()->baseUrl; ?>/bootstrap/js/bootstrap.min.js'></script>
+        <?php
+            if(strtolower($controllerChk) === 'checklist' &&
+                strtolower($actionChk) === 'checklistmanagement')
+                    echo "<script type='text/javascript' src='$dateTimePickerPath/build/jquery.datetimepicker.full.min.js'></script>"
+        ?>
     </head>
     <body>
         <!-- Fixed navbar -->
