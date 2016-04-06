@@ -134,8 +134,8 @@
                             class='form-control'></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputFile">Deadline :</label>
-                        <p class="help-block">deadline...</p>
+                        <label for="deadline-cl">Deadline :</label><br/>
+                        <input id="deadline-cl" placeholder='Choose datetime' class='form-control' type="text" >
                     </div>
                 </form>
             </div>

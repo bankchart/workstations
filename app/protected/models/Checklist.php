@@ -9,7 +9,7 @@ class Checklist extends CActiveRecord {
     public function attributeLabels(){
         return array(
             'checklist_id' => 'Checklist Id',
-            'checklist_topic' => 'Topic',
+            'checklist_topic' => 'Topic', /* no duplicate topic-name !!!! */
             'checklist_detail' => 'Detail',
             'create_datetime' => 'Create Datetime',
             'complete_datetime' => 'Complete Datetime',
