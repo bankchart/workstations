@@ -98,8 +98,8 @@ class ChecklistController extends Controller {
     public function actionSaveAccount(){
         if(isset($_POST['nickname'])){
             $model = User::model()->findByPk(Yii::app()->user->id);
-            $model->nickname = $_POST['nickname'];
-            $model->fullname = $_POST['fullname'];
+            $model->nickname = htmlspecialchars($_POST['nickname'], ENT_QUOTES);
+            $model->fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES);
             $model->save();
             $this->redirect(array('//checklist/account'));
         }else{

@@ -5,6 +5,16 @@
         $selected = array();
         $selected[0] = $record->auth_id == 2 ? 'selected' : '';
         $selected[1] = $record->auth_id == -2 ? 'selected' : '';
+        $ddl = '<i>newbie member</i> <a href="#">accept</a> or <a href="#">remove</a>';
+        if($record->auth_id != -1)
+            $ddl = "
+                <select id='$record->user_id-manage-user' class='manage-user'>
+                    <option $selected[0] value='allow'>allow</option>
+                    <option value='remove'>remove</option>
+                    <option $selected[1] value='ban'>ban</option>
+                </select>
+            ";
+
         echo "
             <tr>
                 <td><input class='checkbox-tb' id='$record->user_id-checkbox-manage-user' type='checkbox'/></td>
@@ -13,12 +23,7 @@
                 <td>$record->fullname</td>
                 <td>$record->signup</td>
                 <td>
-                    <select id='$record->user_id-manage-user' class='manage-user'>
-                        <option value='-1'>--newbie member--</option>
-                        <option $selected[0] value='allow'>allow</option>
-                        <option value='remove'>remove</option>
-                        <option $selected[1] value='ban'>ban</option>
-                    </select>
+                    $ddl
                 </td>
             </tr>
         ";
