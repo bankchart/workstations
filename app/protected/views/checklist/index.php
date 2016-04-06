@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<!-- message modal -->
+<!-- message modal (update user-authority ajax) -->
 <div id='modal-alert' class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -93,5 +93,28 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- message modal -->
+<!-- message modal (update user-authority ajax) -->
+
+<!-- message modal (multiple user-authority ajax) -->
+<div id='multiple-modal-alert' class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id='multiple-title-alert'>Confirm your perform</h4>
+            </div>
+            <div class="modal-body" id='multiple-message-alert'>
+                <p>
+                    Do you want to perform multiple authority?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id='multiple-confirm-perform'>Yes, I do</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- message modal (multiple user-authority ajax) -->
 <script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-tb.js'></script>

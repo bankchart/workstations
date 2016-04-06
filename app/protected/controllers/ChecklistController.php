@@ -26,7 +26,7 @@ class ChecklistController extends Controller {
     }
 
     public function actionManageMemberAjax(){
-        if(Yii::app()->user->isAdmin()){
+        if(Yii::app()->user->isAdmin()){ // add searc nickname and fullname...coding
             if(empty($_POST))
                 exit;
             $searchName = $_POST['search-mem-name'];
@@ -66,7 +66,7 @@ class ChecklistController extends Controller {
     }
 
     public function actionUpdateUserAuthorityAjax(){
-        if($_POST){
+        if($_POST && Yii::app()->user->isAdmin()){
             $user_id = $_POST['user_id'];
             $authStr = null;
             if(isset(Yii::app()->params['userFilterType'][$_POST['auth_str']])){
@@ -106,7 +106,7 @@ class ChecklistController extends Controller {
     }
 
     public function actionDeleteNewbiePerformAjax(){
-        if($_POST){
+        if($_POST && Yii::app()->user->isAdmin()){
             $user_id = $_POST['user_id'];
             $sql = 'DELETE FROM user_tb WHERE user_id = :user_id';
             $connection = Yii::app()->db;
@@ -118,7 +118,7 @@ class ChecklistController extends Controller {
     }
 
     public function actionAcceptNewBiePerformAjax(){
-        if($_POST){
+        if($_POST && Yii::app()->user->isAdmin()){
             $user_id = trim($_POST['user_id']);
             $model = User::model()->findByPk($user_id);
             $model->accept = new CDbExpression('NOW()');
@@ -128,12 +128,44 @@ class ChecklistController extends Controller {
         }
     }
 
-    public function actionManageMemberPerformAjax(){
-        if(Yii::app()->user->isAdmin()){
-            echo CJSON::encode(array(
-                'objectPerform' => 'test-objectPerform',
-                'message' => 'test-message'
-            ));
+    public function actionMultipleManageMemberPerformAjax(){
+        if($_POST && Yii::app()->user->isAdmin()){
+            $users_id = explode(',', $_POST['users_id']);
+            $perform = $_POST['perform'];
+            if($perform == 'allow'){
+                $count = 0;
+                foreach($users_id as $n){
+                    $model = User::model()->findByPk($n);
+                    $model->auth_id = 2;
+                    if($model->save())
+                        $count++;
+                }
+                if($count > 0)
+                    echo 'completed';
+                else
+                    echo 'failed';
+            }else if($perform == 'ban'){
+                $count = 0;
+                foreach($users_id as $n){
+                    $model = User::model()->findByPk($n);
+                    $model->auth_id = -2;
+                    if($model->save())
+                        $count++;
+                }
+                if($count > 0)
+                    echo 'completed';
+                else
+                    echo 'failed';
+            }else if($perform == 'remove'){
+                $count = 0;
+                foreach($users_id as $n){
+                    $count += User::model()->deleteByPk($n);
+                }
+                if($count > 0)
+                    echo 'completed';
+                else
+                    echo 'failed';
+            }
         }
     }
 

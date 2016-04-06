@@ -19,13 +19,13 @@
 		<div class="form-group">
 			<label class='col-sm-2 control-label' for='username'>Username :</label>
 			<div class="col-sm-5">
-				<input type="text" class="form-control" name='username' id="username" placeholder="Enter Username">
+				<input type="text" class="form-control" name='username' id="username" placeholder="Enter Username (6-20 characters)">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class='col-sm-2 control-label' for='password'>Password :</label>
 			<div class="col-sm-5">
-				<input type="password" class="form-control" name='password' id="password" placeholder="Enter Password">
+				<input type="password" class="form-control" name='password' id="password" placeholder="Enter Password (8-20 characters)">
 			</div>
 		</div>
 		<div class="form-group">

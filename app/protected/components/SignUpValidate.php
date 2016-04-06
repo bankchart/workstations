@@ -5,11 +5,11 @@ class SignUpValidate {
     private $_role_len_password = 8;
 
     public function isPassRoleUserName($username){
-        return strlen($username) >= $_role_len_username ? true : false;
+        return strlen($username) <= 20 && strlen($username) >= $this->_role_len_username ? true : false;
     }
 
     public function isPassRolePassWord($password){
-        return strlen($password) >= $_role_len_password ? true : false;
+        return strlen($password) <= 60 && strlen($password) >= $this->_role_len_password ? true : false;
     }
 
     public function isDuplicateUserName($username){

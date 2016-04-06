@@ -61,7 +61,7 @@ class SiteController extends Controller
 				$signUpRole = new SignUpValidate; // in components/SignUpValidate.php
 				$lenUsernameRole = $signUpRole->getRoleLenUserName();
 				$lenPasswordRole = $signUpRole->getRoleLenPassWord();
-				if(strlen($username) > $lenUsernameRole && strlen($password) > $lenPasswordRole){
+				if($signUpRole->isPassRoleUserName($username) && $signUpRole->isPassRolePassWord($password)){
 					if($signUpRole->isDuplicateUserName($username) || $confirmPassword != $password){
 						$result = array('signUpStatus' => 'failed');
 					}else{

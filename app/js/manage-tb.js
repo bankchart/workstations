@@ -8,6 +8,7 @@ $(document).ready(function(){
     var checkbox_tb = $('.checkbox-tb');
     var once_manage_user_before_perform = undefined;
     var once_manage_user_perform = undefined;
+    var perform_btn = undefined;
     var manage_user_ddl = $('.manage-user');
 
     getMemberBodyTable(body_table_id, records_per_table,
@@ -52,31 +53,13 @@ $(document).ready(function(){
     });
 
     $('body').on('change', '.manage-user', function(){
-        var id = this.id;
-        var value = $(this).val();
-        $.ajax({
-            url: 'index.php?r=checklist/managememberperformajax',
-            type: 'post',
-            data: {
-                id: id,
-                value: value
-            },
-            dataType: 'json',
-            success: function(data){
-                var objectPerform = data.objectPerform;
-                var message = data.message;
-                console.table(data);
-            }
-        });
-    });
-
-    $('body').on('change', '.manage-user', function(){
         var id = (this.id).split('-')[0];
         var perform = this.options[this.selectedIndex].text;
         var nickname = $('#'+id+'-nickname-field').html();
         var message = 'Do you want to <u>' + perform + ' ' + nickname + '</u> ?';
         once_manage_user_perform = this.id + '*' + this.value;
         $('#message-alert').html(message);
+        $('#title-alert').html('Confirm your perform');
         $('#modal-alert').modal();
     });
 
@@ -115,6 +98,33 @@ $(document).ready(function(){
         /* end: update user-authority ajax */
     });
 
+    $('#multiple-confirm-perform').on('click', function(){
+        var temp = [];
+        $('.checkbox-tb').each(function(){
+            if($('#' + this.id).prop('checked'))
+                temp.push((this.id).split('-')[0]);
+        });
+        $('#multiple-modal-alert').modal('hide');
+        /* start: update user-authority ajax */
+        $.ajax({
+            url: 'index.php?r=checklist/multiplemanagememberperformajax',
+            data: {
+                perform: perform_btn.split('-')[0],
+                users_id: temp.join()
+            },
+            type: 'post',
+            success: function(data){
+                if(data == 'completed')
+                    getMemberBodyTable(body_table_id, records_per_table,
+                        records_in_page, search_mem_name);
+            },
+            complete: function(){
+                perform_btn = undefined;
+            }
+        });
+        /* end: update user-authority ajax */
+    });
+
     $('body').on('click', '.newbie-perform', function(){
         var temp = (this.id).split('-');
         var user_id = temp[0];
@@ -132,13 +142,19 @@ $(document).ready(function(){
     });
 
     $('.multiple-perform').on('click', function(){
+        var countCheckbox = 0;
         $('.checkbox-tb').each(function(){
-            console.log(this.id + ', checked : ' + $('#' + this.id).prop('checked'));
+            if($('#' + this.id).prop('checked'))
+                countCheckbox++;
         });
+        if(countCheckbox>0){
+            perform_btn = this.id;
+            $('#multiple-modal-alert').modal();
+        }
     });
 
     function getMemberBodyTable(id, records, page, mem_name, message='loading...', delay=700){
-        var defaultHtml = "<td style='text-align: center;' colspan='6'>" + message + "</td>";
+        var defaultHtml = "<td style='text-align: center;' colspan='7'>" + message + "</td>";
         id.html(defaultHtml);
         setTimeout(function(){
             $.ajax({
@@ -152,7 +168,8 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function(data){
                     id.html(data.tbody_member);
-                    page.html(data.page_dropdown_list_html)
+                    page.html(data.page_dropdown_list_html);
+                    $('.all-checkbox-tb').prop('checked', false);
                 }
             });
         }, delay);
