@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+/* use in manage-member */
     var body_table_id = $('#member-body-table');
     var records_per_table = $('#records-per-table');
     var records_in_page = $('#records-in-page');

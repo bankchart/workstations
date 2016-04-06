@@ -14,7 +14,8 @@ class SiteController extends Controller
 	public function actionTest(){
 		// $model = User::model()->findByPk(1);
 		// echo 'auth_id : ' . $model->auth_id;
-		echo '...';
+		$model = Checklist::model()->findAll();
+		echo 'count : ' . count($model);
 	}
 
 	public function actions()

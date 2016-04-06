@@ -178,8 +178,8 @@ class ChecklistController extends Controller {
     }
 
     public function actionChecklistManagementAjax(){
-        if(!Yii::app()->user->isGuest){
-            echo 'loaded.';
+        if($_POST){
+            
         }
     }
 
