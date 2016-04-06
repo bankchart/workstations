@@ -1,5 +1,6 @@
 # PLEASE. Help me update documentation.
 [Doc.tpl](https://github.com/xdan/datetimepicker/blob/master/doc.tpl)
+http://xdsoft.net/jqplugins/datetimepicker/ (my-added)
 This file will be automatically displayed on the site
 
 # datetimepicker
