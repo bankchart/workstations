@@ -82,7 +82,7 @@ $(document).ready(function(){
         $('#modal-alert').modal('hide');
         /* start: update user-authority ajax */
         $.ajax({
-            url: 'index.php?r=checklist/updateuserauthorityajax',
+            url: 'index.php?r=userAuth/updateuserauthorityajax',
             data: {
                 user_id : user_id,
                 auth_str : auth_str
@@ -107,7 +107,7 @@ $(document).ready(function(){
         $('#multiple-modal-alert').modal('hide');
         /* start: update user-authority ajax */
         $.ajax({
-            url: 'index.php?r=checklist/multiplemanagememberperformajax',
+            url: 'index.php?r=userAuth/multiplemanagememberperformajax',
             data: {
                 perform: perform_btn.split('-')[0],
                 users_id: temp.join()
@@ -130,7 +130,7 @@ $(document).ready(function(){
         var user_id = temp[0];
         var perform = temp[temp.length-1];
         $.ajax({
-            url: 'index.php?r=checklist/' + perform + 'newbieperformajax',
+            url: 'index.php?r=userAuth/' + perform + 'newbieperformajax',
             data: {user_id : user_id},
             type: 'post',
             success: function(data){
@@ -154,11 +154,12 @@ $(document).ready(function(){
     });
 
     function getMemberBodyTable(id, records, page, mem_name, message='loading...', delay=700){
-        var defaultHtml = "<td style='text-align: center;' colspan='7'>" + message + "</td>";
+        var defaultHtml = "<tr><td style='text-align: center;' colspan='7'><i>" +
+                            message + "</i></td></tr>";
         id.html(defaultHtml);
         setTimeout(function(){
             $.ajax({
-                url: 'index.php?r=checklist/managememberajax',
+                url: 'index.php?r=userAuth/managememberajax',
                 type: 'post',
                 data: {
                     'records' : records.val(),
@@ -167,9 +168,14 @@ $(document).ready(function(){
                 },
                 dataType: 'json',
                 success: function(data){
-                    id.html(data.tbody_member);
-                    page.html(data.page_dropdown_list_html);
-                    $('.all-checkbox-tb').prop('checked', false);
+                    if(data.is_empty == 'empty'){
+                        id.html(defaultHtml.replace(message, data.is_empty));
+                    }else{
+                        id.html(data.tbody_member);
+                        page.html(data.page_dropdown_list_html);
+                        $('.all-checkbox-tb').prop('checked', false);
+                    }
+
                 }
             });
         }, delay);

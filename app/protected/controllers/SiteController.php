@@ -14,8 +14,7 @@ class SiteController extends Controller
 	public function actionTest(){
 		// $model = User::model()->findByPk(1);
 		// echo 'auth_id : ' . $model->auth_id;
-		$model = Checklist::model()->findAll();
-		echo 'count : ' . count($model);
+		echo 'user id : ' . Yii::app()->user->id;
 	}
 
 	public function actions()
@@ -102,7 +101,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		//Yii::app()->session->destroy(); // remove session of captcha for change characters
 		if(!Yii::app()->user->isGuest)
-			$this->redirect(array('//checklist'));
+			$this->redirect(array('//userAuth/index'));
 		$this->render('index');
 	}
 

@@ -20,4 +20,26 @@ $(document).ready(function(){
     $('#add-checklist-modal').on('hidden.bs.modal', function(){
         document.getElementById('add-checklist-form').reset();
     });
+
+    function getCheckListBodyTable(id, records, page, topic_name, message='loading...', delay=700){
+        var defaultHtml = "<td style='text-align: center;' colspan='6'>" + message + "</td>";
+        id.html(defaultHtml);
+        setTimeout(function(){
+            $.ajax({
+                url: 'index.php?r=checklist/checklistmanagementajax',
+                type: 'post',
+                data: {
+                    'records-per-page' : records.val(),
+                    'page' : page.val(),
+                    'search-topic-name' : topic_name.val()
+                },
+                dataType: 'json',
+                success: function(data){
+                    id.html(data.tbody_member);
+                    page.html(data.page_dropdown_list_html);
+                    $('.all-checkbox-tb').prop('checked', false);
+                }
+            });
+        }, delay);
+    }
 });
