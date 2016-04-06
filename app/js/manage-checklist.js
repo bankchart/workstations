@@ -19,6 +19,10 @@ $(document).ready(function(){
     var search_topic_name = $('#search-topic-name');
     var search_topic_form = $('#search-topic-form');
 
+    var topic_cl = $("#topic-cl");
+    var detail_cl = $('#detail-cl');
+    var deadline_cl = $('#deadline-cl');
+
     getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
                             search_topic_name);
 
@@ -30,8 +34,22 @@ $(document).ready(function(){
         document.getElementById('add-checklist-form').reset();
     });
 
+    $('#search-topic-form').on('submit', function(){
+        return false;
+    });
+
+    $('#add-checklist-form').on('submit', function(){
+        addNewCheckListAjax(topic_cl, detail_cl, deadline_cl);
+        return false;
+    });
+
+    $('#add-checklist-btn-modal').on('click', function(){
+        $('#add-checklist-form').submit();
+    });
+
     function getCheckListBodyTable(id, records, page, topic_name, message='loading...', delay=700){
-        var defaultHtml = "<td style='text-align: center;' colspan='6'>" + message + "</td>";
+        var defaultHtml = "<tr><td style='text-align: center;' colspan='6'><i>" +
+                            message + "</i></td></tr>";
         id.html(defaultHtml);
         setTimeout(function(){
             $.ajax({
@@ -44,11 +62,30 @@ $(document).ready(function(){
                 },
                 dataType: 'json',
                 success: function(data){
+                    if(data.is_empty){
+                        id.html(defaultHtml.replace(message, data.is_empty));
+                    }else{
                     // id.html(data.tbody_member);
                     // page.html(data.page_dropdown_list_html);
                     // $('.all-checkbox-tb').prop('checked', false);
+                    }
                 }
             });
         }, delay);
-    }
-});
+    }/* end: getCheckListBodyTable Fn. */
+
+    function addNewCheckListAjax(topic, detail, deadline){
+        $.ajax({
+            url: 'index.php?r=checklist/addchecklistajax',
+            type: 'post',
+            data: {
+                topic: topic.val(),
+                detail: detail.val(),
+                deadline: deadline.val()
+            },
+            success: function(data){
+
+            }
+        });
+    }/* end: addNewCheckListAjax Fn. */
+}); /* end: document.ready */

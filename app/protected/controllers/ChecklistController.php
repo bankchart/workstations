@@ -20,7 +20,9 @@ class ChecklistController extends Controller {
     }
 
     public function actionChecklistManagementAjax(){
-        if($_POST){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
+                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
             $user_id = Yii::app()->user->id;
             $searchTopic = addslashes(trim($_POST['search-topic-name']));
             $limit = $_POST['records-per-page'];
@@ -29,7 +31,20 @@ class ChecklistController extends Controller {
             $checklistCriteria->condition = "user_id <> :user_id";
             $checklistCriteria->params = array(':user_id' => $user_id);
             $checklistModel = Checklist::model()->findAll($checklistCriteria);
-            echo CJSON::encode($checklistModel);
+            echo CJSON::encode(array(
+                'is_empty' => count($checklistModel) == 0 ? 'empty' : 'exist'
+            ));
+        }else{
+            $this->redirect(array('index'));
+        }
+    }
+
+    public function actionAddChecklistAjax(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
+                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+        }else{
+            $this->redirect(array('index'));
         }
     }
 }

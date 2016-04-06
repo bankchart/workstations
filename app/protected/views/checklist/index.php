@@ -99,4 +99,4 @@
 		$('#checklist').addClass('active');
 	});
 </script>
-<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-checklist.js'></script>
+<script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-checklist.js?v=2'></script>
