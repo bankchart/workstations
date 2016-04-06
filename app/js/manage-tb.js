@@ -131,6 +131,12 @@ $(document).ready(function(){
         });
     });
 
+    $('.multiple-perform').on('click', function(){
+        $('.checkbox-tb').each(function(){
+            console.log(this.id + ', checked : ' + $('#' + this.id).prop('checked'));
+        });
+    });
+
     function getMemberBodyTable(id, records, page, mem_name, message='loading...', delay=700){
         var defaultHtml = "<td style='text-align: center;' colspan='6'>" + message + "</td>";
         id.html(defaultHtml);

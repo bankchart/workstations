@@ -59,9 +59,9 @@
     </div><!-- end: table-responsive -->
     <div class='row'>
         <div class='col-sm-12'>
-            <button id='allow-btn'>allow</button>
-            <button id='remove-btn'>remove</button>
-            <button id='ban-btn'>ban</button>
+            <button id='allow-btn' class='multiple-perform'>allow</button>
+            <button id='remove-btn' class='multiple-perform'>remove</button>
+            <button id='ban-btn' class='multiple-perform'>ban</button>
             <div class='pull-right'>
                 <label>page :</label>
                 <select id='records-in-page'>
