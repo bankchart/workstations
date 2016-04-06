@@ -26,19 +26,21 @@ class ChecklistController extends Controller {
     }
 
     public function actionManageMemberAjax(){
-        if(Yii::app()->user->isAdmin()){ // add searc nickname and fullname...coding
+        if(Yii::app()->user->isAdmin()){
             if(empty($_POST))
                 exit;
-            $searchName = $_POST['search-mem-name'];
+            $searchName = trim($_POST['search-mem-name']);
+            $conditionSearchName = $searchName != '' ?
+                "AND (nickname LIKE '%$searchName%' OR fullname LIKE '%$searchName%')" : '';
             $limit = $_POST['records'];
-            $offset = $_POST['page'] > 1 ? $limit*$_POST['page'] - $limit : 0;
+            $offset = $limit*$_POST['page'] - $limit;
             $model = User::model()->findAll(array(
                 'limit' => $limit,
                 'offset' => $offset,
-                'condition' => 'auth_id != 1 '
+                'condition' => 'auth_id != 1 ' . $conditionSearchName
             ));
             $countModel = User::model()->findAll(array(
-                'condition' => 'auth_id != 1'
+                'condition' => 'auth_id != 1 ' . $conditionSearchName
             ));
             $count = count($countModel);
             $defaultRecordsPerPage = $limit;
