@@ -68,6 +68,7 @@ $(document).ready(function(){
                     // id.html(data.tbody_member);
                     // page.html(data.page_dropdown_list_html);
                     // $('.all-checkbox-tb').prop('checked', false);
+                        console.log(data.is_empty);
                     }
                 }
             });
@@ -84,7 +85,7 @@ $(document).ready(function(){
                 deadline: deadline.val()
             },
             success: function(data){
-
+                console.log(data);
             }
         });
     }/* end: addNewCheckListAjax Fn. */

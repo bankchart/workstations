@@ -14,7 +14,7 @@ class SiteController extends Controller
 	public function actionTest(){
 		// $model = User::model()->findByPk(1);
 		// echo 'auth_id : ' . $model->auth_id;
-		echo 'user id : ' . Yii::app()->user->id;
+		echo count(Checklist::model()->find());
 	}
 
 	public function actions()

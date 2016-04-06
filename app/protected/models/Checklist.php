@@ -12,7 +12,7 @@ class Checklist extends CActiveRecord {
             'checklist_topic' => 'Topic', /* no duplicate topic-name !!!! */
             'checklist_detail' => 'Detail',
             'create_datetime' => 'Create Datetime',
-            'complete_datetime' => 'Complete Datetime',
+            'done_datetime' => 'Done Datetime',
             'cancel_datetime' => 'Cancel Datetime',
             'deadline_datetime' => 'Deadline Datetime',
             'user_id' => 'User Id',
