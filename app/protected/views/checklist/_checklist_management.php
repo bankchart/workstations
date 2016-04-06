@@ -102,6 +102,8 @@
     </div><!-- end: .table-responsive -->
     <div class='row'>
         <div class='col-sm-12'>
+            <button class='btn btn-default' id='complete-checklist-btn'>complete</button>
+            <button class='btn btn-default' id='cancel-checklist-btn'>cancel</button>
             <div class='pull-right'>
                 <label>page :</label>
                 <select>
