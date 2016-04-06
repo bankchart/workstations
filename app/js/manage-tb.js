@@ -6,6 +6,7 @@ $(document).ready(function(){
     var search_mem_name = $('#search-mem-name');
     var search_name_form = $('#search-name-form');
     var checkbox_tb = $('.checkbox-tb');
+    var once_manage_user_before_perform = undefined;
     var once_manage_user_perform = undefined;
     var manage_user_ddl = $('.manage-user');
 
@@ -74,28 +75,60 @@ $(document).ready(function(){
         var perform = this.options[this.selectedIndex].text;
         var nickname = $('#'+id+'-nickname-field').html();
         var message = 'Do you want to <u>' + perform + ' ' + nickname + '</u> ?';
+        once_manage_user_perform = this.id + '*' + this.value;
         $('#message-alert').html(message);
         $('#modal-alert').modal();
     });
 
     $('body').on('focus', '.manage-user', function(){
-        once_manage_user_perform = this.id + '*' + this.value;
-        console.log(once_manage_user_perform);
+        once_manage_user_before_perform = this.id + '*' + this.value;
+        console.log(once_manage_user_before_perform);
     });
 
     $('#modal-alert').on('hidden.bs.modal', function(){
-        if(once_manage_user_perform !== undefined){
-            var temp = once_manage_user_perform.split('*');
+        if(once_manage_user_before_perform !== undefined){
+            var temp = once_manage_user_before_perform.split('*');
             $('#' + temp[0]).val(temp[1]);
         }
     });
 
     $('#confirm-perform').on('click', function(){
-        once_manage_user_perform = undefined;
+        var temp = once_manage_user_perform.split('*');
+        var user_id = temp[0].split('-')[0];
+        var auth_str = temp[1];
         $('#modal-alert').modal('hide');
         /* start: update user-authority ajax */
-
+        $.ajax({
+            url: 'index.php?r=checklist/updateuserauthorityajax',
+            data: {
+                user_id : user_id,
+                auth_str : auth_str
+            },
+            type: 'post',
+            success: function(data){
+                once_manage_user_before_perform = undefined;
+                if(data == 'deleted')
+                    getMemberBodyTable(body_table_id, records_per_table,
+                        records_in_page, search_mem_name);
+            }
+        });
         /* end: update user-authority ajax */
+    });
+
+    $('body').on('click', '.newbie-perform', function(){
+        var temp = (this.id).split('-');
+        var user_id = temp[0];
+        var perform = temp[temp.length-1];
+        $.ajax({
+            url: 'index.php?r=checklist/' + perform + 'newbieperformajax',
+            data: {user_id : user_id},
+            type: 'post',
+            success: function(data){
+                if(data == 'deleted' || data == 'accepted')
+                    getMemberBodyTable(body_table_id, records_per_table,
+                        records_in_page, search_mem_name);
+            }
+        });
     });
 
     function getMemberBodyTable(id, records, page, mem_name, message='loading...', delay=700){
