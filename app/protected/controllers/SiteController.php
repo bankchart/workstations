@@ -14,8 +14,7 @@ class SiteController extends Controller
 	public function actionTest(){
 		// $model = User::model()->findByPk(1);
 		// echo 'auth_id : ' . $model->auth_id;
-		$i = 7%10;
-		echo " 7%10 : " . $i;
+		echo 'null....';
 	}
 
 	public function actions()
@@ -72,7 +71,8 @@ class SiteController extends Controller
 						$model->username = $username;
 						$model->password = CPasswordHelper::hashPassword($password);
 						$model->auth_id = -1;
-						$model->nickname = 'your nickname';
+						$model->nickname = 'empty';
+						$model->signup = new CDbExpression('NOW()');
 						$model->save();
 						/* end: insert new user */
 						$this->redirect(array('index'));

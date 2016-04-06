@@ -87,6 +87,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'mrbankshart@gmail.com',
-		'defaultPerPageTable' => array(10, 15, 30, 50)
+		'defaultPerPageTable' => array(5, 10, 15, 30, 50)
 	),
 );

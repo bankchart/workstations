@@ -6,6 +6,8 @@
         $selected[0] = $record->auth_id == 2 ? 'selected' : '';
         $selected[1] = $record->auth_id == -2 ? 'selected' : '';
         $ddl = '<i>newbie member</i> <a href="#">accept</a> or <a href="#">remove</a>';
+        $signupDate = $record->signup == '0000-00-00 00:00:00' ? '-' : $record->signup;
+        $acceptDate = $record->accept == '0000-00-00 00:00:00' ? '-' : $record->accept;
         if($record->auth_id != -1)
             $ddl = "
                 <select id='$record->user_id-manage-user' class='manage-user'>
@@ -21,7 +23,8 @@
                 <td>$no</td>
                 <td id='$record->user_id-nickname-field'>$record->nickname</td>
                 <td>$record->fullname</td>
-                <td>$record->signup</td>
+                <td>$signupDate</td>
+                <td>$acceptDate</td>
                 <td>
                     $ddl
                 </td>

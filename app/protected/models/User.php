@@ -18,6 +18,7 @@ class User extends CActiveRecord {
             'fullname' => 'Fullname',
             'nickname' => 'Nick name',
             'signup' => 'SignUp Date',
+            'accept' => 'Accept Date',
             'auth_id' => 'Auth id'
         );
     }

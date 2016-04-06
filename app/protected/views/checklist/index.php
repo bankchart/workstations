@@ -30,6 +30,7 @@
                     <th><?=User::model()->attributeLabels()['nickname']?></th>
                     <th><?=User::model()->attributeLabels()['fullname']?></th>
                     <th><?=User::model()->attributeLabels()['signup']?></th>
+                    <th><?=User::model()->attributeLabels()['accept']?></th>
                     <th>Manage</th>
                 </tr>
             </thead>
@@ -87,7 +88,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id='comfirm-perform'>Yes, I do</button>
+                <button type="button" class="btn btn-primary" id='confirm-perform'>Yes, I do</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

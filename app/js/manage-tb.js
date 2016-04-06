@@ -6,6 +6,7 @@ $(document).ready(function(){
     var search_mem_name = $('#search-mem-name');
     var search_name_form = $('#search-name-form');
     var checkbox_tb = $('.checkbox-tb');
+    var once_manage_user_perform = undefined;
     var manage_user_ddl = $('.manage-user');
 
     getMemberBodyTable(body_table_id, records_per_table,
@@ -77,8 +78,28 @@ $(document).ready(function(){
         $('#modal-alert').modal();
     });
 
-    function getMemberBodyTable(id, records, page, mem_name, delay=700){
-        var defaultHtml = "<td style='text-align: center;' colspan='6'>loading...</td>";
+    $('body').on('focus', '.manage-user', function(){
+        once_manage_user_perform = this.id + '*' + this.value;
+        console.log(once_manage_user_perform);
+    });
+
+    $('#modal-alert').on('hidden.bs.modal', function(){
+        if(once_manage_user_perform !== undefined){
+            var temp = once_manage_user_perform.split('*');
+            $('#' + temp[0]).val(temp[1]);
+        }
+    });
+
+    $('#confirm-perform').on('click', function(){
+        once_manage_user_perform = undefined;
+        $('#modal-alert').modal('hide');
+        /* start: update user-authority ajax */
+
+        /* end: update user-authority ajax */
+    });
+
+    function getMemberBodyTable(id, records, page, mem_name, message='loading...', delay=700){
+        var defaultHtml = "<td style='text-align: center;' colspan='6'>" + message + "</td>";
         id.html(defaultHtml);
         setTimeout(function(){
             $.ajax({
