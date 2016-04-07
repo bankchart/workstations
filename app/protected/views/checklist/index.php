@@ -42,8 +42,10 @@
     </div><!-- end: .table-responsive -->
     <div class='row'>
         <div class='col-sm-12'>
-            <button class='btn btn-default' id='complete-checklist-btn'>done</button>
-            <button class='btn btn-default' id='cancel-checklist-btn'>cancel</button>
+            <button class='btn btn-default multiple-checklist-status-btn'
+                id='done-checklist-btn'>done</button>
+            <button class='btn btn-default multiple-checklist-status-btn'
+                id='cancel-checklist-btn'>cancel</button>
             <div class='pull-right'>
                 <label>page :</label>
                 <select id='records-in-page' name='records-in-page'>

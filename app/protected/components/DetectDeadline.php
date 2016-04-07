@@ -19,7 +19,12 @@ class DetectDeadline {
                 $temp_model->save();
             }
         }
-        return true;
+    }
+    public function test1(){
+        $this->test2();
+    }
+    public function test2(){
+        echo 'in test2';
     }
 }
 ?>

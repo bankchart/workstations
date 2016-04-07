@@ -21,7 +21,7 @@ class SiteController extends Controller
 		// 	echo $n['diff'];
 		// }
 		$temp = new DetectDeadline;
-		$temp->updateStatus();
+		$temp->test1();
 	}
 
 	public function actions()

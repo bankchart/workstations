@@ -21,7 +21,7 @@
         <td>
             <?php
             echo ($temp == 'doing') ?
-            "<input type='checkbox' class='checkbox-tb'/>" : '';
+            "<input id='$record->checklist_id-checkbox-checklist-status' type='checkbox' class='checkbox-tb'/>" : '';
             ?>
         </td>
         <td><?=$no?></td>

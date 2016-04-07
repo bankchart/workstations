@@ -20,6 +20,7 @@ $(document).ready(function(){
     var search_topic_form = $('#search-topic-form');
     var once_checklist_status_before_perform = undefined;
     var once_checklist_status_perform = undefined;
+    var multiple_perform_btn = undefined;
 
     var first_value_records_per_table = records_per_table.val();
     var first_value_records_in_page = records_in_page.val() == '' ? 0 : records_in_page.val();
@@ -88,7 +89,37 @@ $(document).ready(function(){
     });
 
     $('#change-checklist-status-btn-modal').on('click', function(){
-        // console.log('confirm-change-checklist-status : ' + once_checklist_status_perform);
+        /* console.log('confirm-change-checklist-status : ' + once_checklist_status_perform);*/
+
+        /* start: multiple perform checklist-status...coding ... ajax */
+        if(multiple_perform_btn !== undefined){
+            var count = 0;
+            var checklists = [];
+            $('.checkbox-tb').each(function(){
+                if($(this).prop('checked'))
+                    checklists.push(this.id);
+            });
+            $.ajax({
+                url: 'index.php?r=checklist/multiplechangecheckliststatusajax',
+                data: {
+                    checklists : checklists.join(),
+                    perform : multiple_perform_btn
+                },
+                type: 'post',
+                success: function(data){
+                    if(data == 'completed')
+                        alert('Changed status');
+                },
+                complete: function(){
+                    $('#confirm-manage-checklist-status').modal('hide');
+                    getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
+                                            search_topic_name);
+                }
+            });
+            return false;
+        }
+        /* end: multiple perform checklist-status */
+
         var temp = once_checklist_status_perform.split('*');
         var id = temp[0].split('-')[0];
         var status = temp[1];
@@ -118,14 +149,31 @@ $(document).ready(function(){
     });
 
     $('#confirm-manage-checklist-status').on('hidden.bs.modal', function(){
-        var temp = once_checklist_status_before_perform.split('*');
-        var checklist_status_id = $('#' + temp[0]);
-        checklist_status_id.val(temp[1]);
+        if(once_checklist_status_before_perform !== undefined){
+            var temp = once_checklist_status_before_perform.split('*');
+            var checklist_status_id = $('#' + temp[0]);
+            checklist_status_id.val(temp[1]);
+        }
+        multiple_perform_btn = undefined;
+        once_checklist_status_perform = undefined;
     });
 
      $('body').on('click', '.view-checklist-detail', function(){
          getChecklistDetail((this.id).split('-')[0]);
      });
+
+     $('.multiple-checklist-status-btn').on('click', function(){
+         var count = 0;
+         $('.checkbox-tb').each(function(){
+             count += $(this).prop('checked') ? 1 : 0;
+         });
+         if(count > 0){
+             multiple_perform_btn = $(this).html();
+             var message = 'Do you want to change multiple status ' + '?';
+             $('#message-checklist-status').html(message)
+             $('#confirm-manage-checklist-status').modal();
+        }
+    });
 
     function getChecklistDetail(id){
         $.ajax({

@@ -144,9 +144,8 @@ class ChecklistController extends Controller {
                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $checklistModel = Checklist::model()->findByPk($_POST['id']);
             $detect = new DetectDeadline;
-            //echo 'status : ' . $checklistModel->checklist_status_id;
-            if($detect->updateStatus() && count($checklistModel) > 0 &&
-                $checklistModel != null){
+            $detect->updateStatus();
+            if(count($checklistModel) > 0 && $checklistModel != null){
                 if($checklistModel->checklist_status_id !== 4){
                     echo 'failed';
                 }else{
@@ -158,6 +157,32 @@ class ChecklistController extends Controller {
             }
         }else{
             $this->redirect(array('index'));
+        }
+    }
+
+    public function actionMultipleChangeChecklistStatusAjax(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
+                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+            $detect = new DetectDeadline;
+            $detect->updateStatus();
+
+            $checklists = explode(',', $_POST['checklists']);
+            $perform = trim($_POST['perform']);
+            $checklistStatusModel = ChecklistStatus::model()->find(array(
+                'condition' => 'checklist_status_name = :status_name',
+                'params' => array(':status_name' => $perform)
+            ));
+            foreach($checklists as $cl){
+                $checklist_id = trim(explode('-', $cl)[0]);
+                $checklistModel = Checklist::model()->findByPk($checklist_id);
+                if($checklistModel->checklist_status_id == 4){
+                    $checklistModel->checklist_status_id = $checklistStatusModel
+                                                            ->checklist_status_id;
+                    $checklistModel->save();
+                }
+            }
+            echo 'completed';
         }
     }
 }
