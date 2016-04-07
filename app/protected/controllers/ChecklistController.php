@@ -28,7 +28,8 @@ class ChecklistController extends Controller {
             $searchTopic = addcslashes(trim($_POST['search-topic-name']), '%_');
 
             $limit = $_POST['records-per-page'];
-            $offset = $_POST['page']*$limit - $limit;
+            $tempPage = $_POST['page'] == 0 ? 1 : $_POST['page'];
+            $offset = $tempPage*$limit - $limit;
             $checklistCriteria = new CDbCriteria;
             $checklistCriteria->condition = "user_id = :user_id";
             $checklistCriteria->limit = $limit;

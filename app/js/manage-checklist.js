@@ -209,12 +209,13 @@ $(document).ready(function(){
                 },
                 dataType: 'json',
                 success: function(data){
+                    page.html(data.page_html);
                     if(data.is_empty == 'empty'){
                         id.html(defaultHtml.replace(message, data.is_empty));
                     }else{
                         id.html(data.checklist_body_table);
                     }
-                    page.html(data.page_html);
+
                 }
             });
         }, delay);
