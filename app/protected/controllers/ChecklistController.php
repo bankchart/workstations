@@ -88,9 +88,23 @@ class ChecklistController extends Controller {
             $checklistModel->checklist_topic = $topic;/* no duplicate topic-name !!!! */
             $checklistModel->checklist_detail = $detail;
             $checklistModel->create_datetime = new CDbExpression('NOW()');
+            $checklistModel->deadline_datetime = $deadline . ':00';
+            /* start: detect create-datetime & deadline-datetime create < deadline */
+            $result = 0;
+            $temp_create = $checklistModel->create_datetime;
+            $temp_deadline = $checklistModel->deadline_datetime;
+            $tempModel = Yii::app()->db->createCommand("SELECT TIMESTAMPDIFF(SECOND,
+    								'$temp_deadline', '$temp_create') AS diff")
+    					->query();
+            foreach($tempModel as $n)
+                $result = $n['diff'];
+            if($result < 1){
+                echo 'failed';
+                exit;
+            }
+            /* end: detect create-datetime & deadline-datetime create < deadline */
             //$checklistModel->done_datetime = $topic;
             //$checklistModel->cancel_datetime = $topic;
-            $checklistModel->deadline_datetime = $deadline . ':00';
             $checklistModel->user_id = Yii::app()->user->id;
             echo $checklistModel->save() ? 'completed' : 'failed';
         }else{

@@ -15,6 +15,7 @@ class Checklist extends CActiveRecord {
             'done_datetime' => 'Done Datetime',
             'cancel_datetime' => 'Cancel Datetime',
             'deadline_datetime' => 'Deadline Datetime',
+            'checklist_status_id' => 'Checklist Status Id',
             'user_id' => 'User Id',
         );
     }

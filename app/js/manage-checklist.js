@@ -105,6 +105,8 @@ $(document).ready(function(){
             },
             success: function(data){
                 console.log(data);
+                if(data == 'failed')
+                    alert('Incorrect in Adding Checklist Fields');
             }
         });
     }/* end: addNewCheckListAjax Fn. */
