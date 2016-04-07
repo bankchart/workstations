@@ -99,7 +99,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <?php if(!Yii::app()->user->isGuest): ?>
                             <li id='account'>
-                                <a href="index.php?r=checklist/account">Account</a>
+                                <a href="index.php?r=userAuth/account">Account</a>
                             </li>
                         <?php endif; ?>
                         <?php if(Yii::app()->user->isGuest): ?>

@@ -67,7 +67,7 @@ class UserAuthController extends Controller {
         }
     }
 
-    public function actionUpdateUserAuthorityAjax(){
+    public function actionUpdateuserAuthorityAjax(){
         if($_POST && Yii::app()->user->isAdmin()){
             $user_id = $_POST['user_id'];
             $authStr = null;
@@ -186,7 +186,7 @@ class UserAuthController extends Controller {
             $model->nickname = htmlspecialchars($_POST['nickname'], ENT_QUOTES);
             $model->fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES);
             $model->save();
-            $this->redirect(array('//userauth/account'));
+            $this->redirect(array('//userAuth/account'));
         }else{
             $this->redirect(array('index'));
         }

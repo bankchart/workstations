@@ -9,7 +9,7 @@
             echo "<div class='alert alert-success'>Your setting completed.</div>";
         ?>
     <?php endif; ?>
-    <form class="form-horizontal" action='index.php?r=checklist/savenewpassword' method='post'>
+    <form class="form-horizontal" action='index.php?r=userAuth/savenewpassword' method='post'>
         <div class="form-group">
             <label class='col-sm-3 control-label' for='old-password'>Old-password :</label>
             <div class="col-sm-5">

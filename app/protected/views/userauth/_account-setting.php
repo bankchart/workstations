@@ -1,9 +1,9 @@
 <div class='well'>
     <h3 style='display: inline;'>Account setting</h3>
-    <button onclick='location.href="index.php?r=checklist/changepasswordform"' class='pull-right btn btn-default'>Change password</button>
+    <button onclick='location.href="index.php?r=userAuth/changepasswordform"' class='pull-right btn btn-default'>Change password</button>
     <hr/>
 
-    <form class="form-horizontal" action='index.php?r=checklist/saveaccount' method='post'>
+    <form class="form-horizontal" action='index.php?r=userAuth/saveaccount' method='post'>
         <div class="form-group">
             <label class='col-sm-2 control-label'>Username :</label>
             <div class="col-sm-5">

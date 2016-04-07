@@ -2136,3 +2136,70 @@ REQUEST_URI=/workstations/app/index.php?r=checklist/checklistmanagementajax
 in /opt/lampp/htdocs/workstations/app/protected/views/checklist/_checklist-management-ajax.php (24)
 in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (63)
 in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/07 23:56:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "account".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('account')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('account')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/accou...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/account
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/checklistmanagement
+---
+2016/04/07 23:56:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "userauth/account".' in /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('userauth/accoun...')
+#1 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/workstations/app/index.php?r=userauth/account
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/checklistmanagement
+---
+2016/04/07 23:56:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "changepasswordform".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('changepasswordf...')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('changepasswordf...')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/chang...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/changepasswordform
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=userAuth/account
+---
+2016/04/07 23:57:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "userauth/account".' in /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('userauth/accoun...')
+#1 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/workstations/app/index.php?r=userauth/account
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=userAuth/account
+---
+2016/04/07 23:58:21 [error] [exception.CException] exception 'CException' with message 'userAuthController cannot find the requested view "/userAuth/_account-setting".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:878
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(782): CController->renderPartial('/userAuth/_acco...', Array, true)
+#1 /opt/lampp/htdocs/workstations/app/protected/controllers/UserAuthController.php(180): CController->render('/userAuth/_acco...', Array)
+#2 /opt/lampp/htdocs/workstations/framework/web/actions/CInlineAction.php(49): userAuthController->actionAccount()
+#3 /opt/lampp/htdocs/workstations/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), NULL)
+#6 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('account')
+#7 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('userAuth/accoun...')
+#8 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/workstations/app/index.php?r=userAuth/account
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=checklist/checklistmanagement
+---
+2016/04/07 23:59:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "savenewpassword".' in /opt/lampp/htdocs/workstations/framework/web/CController.php:483
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(270): CController->missingAction('savenewpassword')
+#1 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): CController->run('savenewpassword')
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController('checklist/saven...')
+#3 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /opt/lampp/htdocs/workstations/app/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/workstations/app/index.php?r=checklist/savenewpassword
+HTTP_REFERER=http://localhost/workstations/app/index.php?r=userAuth/changepasswordform
+---
