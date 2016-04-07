@@ -54,7 +54,7 @@
     </div>
 </div><!-- end: .well -->
 
-<!-- message modal (multiple user-authority ajax) -->
+<!-- start: add new checklist form  ajax -->
 <div id='add-checklist-modal' class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -91,7 +91,42 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- message modal (multiple user-authority ajax) -->
+<!-- end: add new checklist form ajax) -->
+
+<!-- start: confirm manage checklist-status -->
+<div id='confirm-manage-checklist-status' class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirm change checklist status</h4>
+            </div>
+            <div id='message-checklist-status' class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id='change-checklist-status-btn-modal' type="button" class="btn btn-primary">Yes, I do</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- end: confirm manage checklist-status -->
+
+<!-- start: view checklist-detail -->
+<div id='checklist-detail-modal' class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirm change checklist status</h4>
+            </div>
+            <div id='checklist-detail-body-modal' class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- end: view checklist-detail -->
 
 <input type='hidden' name='menu-active' value='<?php echo $menu_active; ?>'/>
 <script type='text/javascript'>

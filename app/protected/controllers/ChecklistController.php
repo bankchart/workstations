@@ -73,7 +73,7 @@ class ChecklistController extends Controller {
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $topic = addslashes(trim($_POST['topic']));
-            $detail = addslashes(trim($_POST['detail']));
+            $detail = addslashes(nl2br(trim($_POST['detail'])));
             $deadline = addslashes(trim($_POST['deadline']));
             $isDuplicate = count(Checklist::model()->find(array(
                 'condition' => 'checklist_topic = :topic',
@@ -88,14 +88,22 @@ class ChecklistController extends Controller {
                 $checklistModel->checklist_id = 1;
             $checklistModel->checklist_topic = $topic;/* no duplicate topic-name !!!! */
             $checklistModel->checklist_detail = $detail;
-            $checklistModel->create_datetime = new CDbExpression('NOW()');
+
+            $query_now = Yii::app()->db->createCommand(
+                "SELECT NOW() AS now"
+                )->query();
+            $temp_now = '';
+            foreach($query_now as $n)
+                $temp_now = $n['now'];
+
+            $checklistModel->create_datetime = $temp_now;
             $checklistModel->deadline_datetime = $deadline . ':00';
             /* start: detect create-datetime & deadline-datetime create < deadline */
             $result = 0;
             $temp_create = $checklistModel->create_datetime;
             $temp_deadline = $checklistModel->deadline_datetime;
             $tempModel = Yii::app()->db->createCommand("SELECT TIMESTAMPDIFF(SECOND,
-    								'$temp_deadline', '$temp_create') AS diff")
+    								'$temp_create', '$temp_deadline') AS diff")
     					->query();
             foreach($tempModel as $n)
                 $result = $n['diff'];
@@ -106,8 +114,41 @@ class ChecklistController extends Controller {
             /* end: detect create-datetime & deadline-datetime create < deadline */
             //$checklistModel->done_datetime = $topic;
             //$checklistModel->cancel_datetime = $topic;
+            $checklistModel->checklist_status_id = 4;
             $checklistModel->user_id = Yii::app()->user->id;
             echo $checklistModel->save() ? 'completed' : 'failed';
+        }else{
+            $this->redirect(array('index'));
+        }
+    }
+
+    public function actionGetChecklistDetail(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
+                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            $checklistModel = Checklist::model()->findByPk($_POST['id']);
+            if(count($checklistModel) > 0 && $checklistModel != null){
+                echo CJSON::encode(array(
+                    'detail' => $checklistModel->checklist_detail,
+                    'response' => 'completed'
+                ));
+            }else{
+                echo CJSON::encode(array('response' => 'failed'));
+            }
+        }else{
+            $this->redirect(array('index'));
+        }
+    }
+
+    public function actionchangeChecklistStatus(){
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
+                strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            $checklistModel = Checklist::model()->findByPk($_POST['id']);
+            if(count($checklistModel) > 0 && $checklistModel != null){
+                $checklistModel->checklist_status_id = addslashes(trim($_POST['status']));
+                echo $checklistModel->save() ? 'completed' : 'failed';
+            }else{
+                echo 'failed';
+            }
         }else{
             $this->redirect(array('index'));
         }

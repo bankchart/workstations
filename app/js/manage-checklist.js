@@ -18,6 +18,8 @@ $(document).ready(function(){
     var records_in_page = $('#records-in-page');
     var search_topic_name = $('#search-topic-name');
     var search_topic_form = $('#search-topic-form');
+    var once_checklist_status_before_perform = undefined;
+    var once_checklist_status_perform = undefined;
 
     var first_value_records_per_table = records_per_table.val();
     var first_value_records_in_page = records_in_page.val() == '' ? 0 : records_in_page.val();
@@ -28,6 +30,15 @@ $(document).ready(function(){
 
     getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
                             search_topic_name);
+
+    $('body').on('click', '.all-checkbox-tb', function(){
+        $('.checkbox-tb').prop('checked', $(this).prop('checked'));
+    });
+
+    $('body').on('click', '.checkbox-tb', function(){
+        if(!$(this).prop('checked'))
+            $('.all-checkbox-tb').prop('checked', false);
+    });
 
     $('#add-checklist-btn').on('click', function(){
         $('#add-checklist-modal').modal();
@@ -67,6 +78,73 @@ $(document).ready(function(){
         getCheckListBodyTable(body_table_id, records_per_table, $(this),
                                 search_topic_name);
     });
+
+    $('body').on('change', '.manage-checklist', function(){
+        var message = 'Do you want to change status to ' +
+                        this.options[this.selectedIndex].text + '?';
+        once_checklist_status_perform = this.id + '*' + $(this).val();
+        $('#message-checklist-status').html(message)
+        $('#confirm-manage-checklist-status').modal();
+    });
+
+    $('#change-checklist-status-btn-modal').on('click', function(){
+        // console.log('confirm-change-checklist-status : ' + once_checklist_status_perform);
+        var temp = once_checklist_status_perform.split('*');
+        var id = temp[0].split('-')[0];
+        var status = temp[1];
+        $.ajax({
+            url: 'index.php?r=checklist/changecheckliststatus',
+            data: {
+                id : id,
+                status : status
+            },
+            type: 'post',
+            success: function(data){
+                if(data == 'completed')
+                    alert('Changed status');
+                else
+                    alert('Can\'t change status');
+            },
+            complete: function(){
+                $('#confirm-manage-checklist-status').modal('hide');
+                getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
+                                        search_topic_name);
+            }
+        });
+    });
+
+    $('body').on('focus', '.manage-checklist', function(){
+        once_checklist_status_before_perform = this.id + '*' + $(this).val();
+    });
+
+    $('#confirm-manage-checklist-status').on('hidden.bs.modal', function(){
+        var temp = once_checklist_status_before_perform.split('*');
+        var checklist_status_id = $('#' + temp[0]);
+        checklist_status_id.val(temp[1]);
+    });
+
+     $('body').on('click', '.view-checklist-detail', function(){
+         getChecklistDetail((this.id).split('-')[0]);
+     });
+
+    function getChecklistDetail(id){
+        $.ajax({
+            url: 'index.php?r=checklist/getchecklistdetail',
+            data: {
+                id : id
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function(data){
+                if(data.response == 'failed'){
+                    alert('Not found your checklist detail.');
+                }else{
+                    $('#checklist-detail-body-modal').html(data.detail);
+                    $('#checklist-detail-modal').modal();
+                }
+            }
+        });
+    }
 
     function getCheckListBodyTable(id, records, page, topic_name, message='loading...', delay=700){
         var defaultHtml = "<tr><td style='text-align: center;' colspan='7'><i>" +
