@@ -21,7 +21,8 @@ class Checklist extends CActiveRecord {
     }
     public function relations(){
         return array(
-            'user' => array(self::BELONGS_TO, 'User', 'user_id')
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+            'checklist_status' => array(self::BELONGS_TO, 'ChecklistStatus', 'checklist_status_id')
         );
     }
 }

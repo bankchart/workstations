@@ -10,7 +10,7 @@ class ChecklistStatus extends CActiveRecord {
         return array(
             'checklist_status_id' => 'Checklist Status Id',
             'checklist_status_name' => 'Checklist Status'
-        )
+        );
     }
 }
 ?>

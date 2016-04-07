@@ -22,7 +22,8 @@ class ChecklistController extends Controller {
     public function actionChecklistManagementAjax(){
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-
+            $detect = new DetectDeadline;
+            $detect->updateStatus();
             $user_id = Yii::app()->user->id;
             $searchTopic = addcslashes(trim($_POST['search-topic-name']), '%_');
 

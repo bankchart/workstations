@@ -14,12 +14,14 @@ class SiteController extends Controller
 	public function actionTest(){
 		// $model = User::model()->findByPk(1);
 		// echo 'auth_id : ' . $model->auth_id;
-		$tempModel = Yii::app()->db->createCommand("SELECT TIMESTAMPDIFF(SECOND,
-								'2012-06-06 13:13:55', '2012-06-06 15:20:18') AS diff")
-					->query();
-		foreach($tempModel as $n){
-			echo $n['diff'];
-		}
+		// $tempModel = Yii::app()->db->createCommand("SELECT TIMESTAMPDIFF(SECOND,
+		// 						'2012-06-06 13:13:55', '2012-06-06 15:20:18') AS diff")
+		// 			->query();
+		// foreach($tempModel as $n){
+		// 	echo $n['diff'];
+		// }
+		$temp = new DetectDeadline;
+		$temp->updateStatus();
 	}
 
 	public function actions()

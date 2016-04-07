@@ -69,7 +69,7 @@ $(document).ready(function(){
     });
 
     function getCheckListBodyTable(id, records, page, topic_name, message='loading...', delay=700){
-        var defaultHtml = "<tr><td style='text-align: center;' colspan='6'><i>" +
+        var defaultHtml = "<tr><td style='text-align: center;' colspan='7'><i>" +
                             message + "</i></td></tr>";
         id.html(defaultHtml);
         setTimeout(function(){

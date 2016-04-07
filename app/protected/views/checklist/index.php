@@ -31,11 +31,12 @@
                     <th><?=Checklist::model()->attributeLabels()['checklist_topic']?></th>
                     <th><?=Checklist::model()->attributeLabels()['create_datetime']?></th>
                     <th><?=Checklist::model()->attributeLabels()['deadline_datetime']?></th>
+                    <th><?=ChecklistStatus::model()->attributeLabels()['checklist_status_name']?></th>
                     <th>Manage</th>
                 </tr>
             </thead>
             <tbody id='checklist-body-table'>
-                <tr><td colspan='6' style='text-align: center;'><i>empty</i></td></tr>
+                <tr><td colspan='7' style='text-align: center;'><i>empty</i></td></tr>
             </tbody>
         </table>
     </div><!-- end: .table-responsive -->
