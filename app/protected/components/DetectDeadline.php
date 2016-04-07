@@ -19,6 +19,7 @@ class DetectDeadline {
                 $temp_model->save();
             }
         }
+        return true;
     }
 }
 ?>

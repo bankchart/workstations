@@ -139,13 +139,20 @@ class ChecklistController extends Controller {
         }
     }
 
-    public function actionchangeChecklistStatus(){
+    public function actionChangeChecklistStatusAjax(){
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_POST &&
                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $checklistModel = Checklist::model()->findByPk($_POST['id']);
-            if(count($checklistModel) > 0 && $checklistModel != null){
-                $checklistModel->checklist_status_id = addslashes(trim($_POST['status']));
-                echo $checklistModel->save() ? 'completed' : 'failed';
+            $detect = new DetectDeadline;
+            //echo 'status : ' . $checklistModel->checklist_status_id;
+            if($detect->updateStatus() && count($checklistModel) > 0 &&
+                $checklistModel != null){
+                if($checklistModel->checklist_status_id !== 4){
+                    echo 'failed';
+                }else{
+                    $checklistModel->checklist_status_id = addslashes(trim($_POST['status']));
+                    echo $checklistModel->save() ? 'completed' : 'failed';
+                }
             }else{
                 echo 'failed';
             }

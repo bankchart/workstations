@@ -93,7 +93,7 @@ $(document).ready(function(){
         var id = temp[0].split('-')[0];
         var status = temp[1];
         $.ajax({
-            url: 'index.php?r=checklist/changecheckliststatus',
+            url: 'index.php?r=checklist/changecheckliststatusajax',
             data: {
                 id : id,
                 status : status
