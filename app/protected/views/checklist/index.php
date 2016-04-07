@@ -41,7 +41,7 @@
     </div><!-- end: .table-responsive -->
     <div class='row'>
         <div class='col-sm-12'>
-            <button class='btn btn-default' id='complete-checklist-btn'>complete</button>
+            <button class='btn btn-default' id='complete-checklist-btn'>done</button>
             <button class='btn btn-default' id='cancel-checklist-btn'>cancel</button>
             <div class='pull-right'>
                 <label>page :</label>
@@ -94,9 +94,9 @@
 
 <input type='hidden' name='menu-active' value='<?php echo $menu_active; ?>'/>
 <script type='text/javascript'>
-	$(document).ready(function(){
+//	$(document).ready(function(){
 		$('ul.nav li').removeClass('active');
 		$('#checklist').addClass('active');
-	});
+//	});
 </script>
 <script type='text/javascript' src='<?php echo Yii::app()->request->baseUrl; ?>/js/manage-checklist.js?v=2'></script>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#deadline-cl').datetimepicker({
-        format:'d-m-Y H:i',
+        format:'Y-m-d H:i',
         step:15
         // onSelectTime:function(datetext){
         //     var d = new Date();
@@ -35,11 +35,16 @@ $(document).ready(function(){
     });
 
     $('#search-topic-form').on('submit', function(){
+        getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
+                                search_topic_name);
         return false;
     });
 
     $('#add-checklist-form').on('submit', function(){
         addNewCheckListAjax(topic_cl, detail_cl, deadline_cl);
+        $("#add-checklist-modal").modal('hide');
+        getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
+                                search_topic_name);
         return false;
     });
 
@@ -62,13 +67,10 @@ $(document).ready(function(){
                 },
                 dataType: 'json',
                 success: function(data){
-                    if(data.is_empty){
+                    if(data.is_empty == 'empty'){
                         id.html(defaultHtml.replace(message, data.is_empty));
                     }else{
-                    // id.html(data.tbody_member);
-                    // page.html(data.page_dropdown_list_html);
-                    // $('.all-checkbox-tb').prop('checked', false);
-                        console.log(data.is_empty);
+                        id.html(data.checklist_body_table);
                     }
                 }
             });
