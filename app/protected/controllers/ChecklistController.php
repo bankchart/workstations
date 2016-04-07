@@ -43,9 +43,7 @@ class ChecklistController extends Controller {
             $checklistModel = Checklist::model()->findAll($checklistCriteria);
             $pages = count(Checklist::model()->findAll(array(
                     'condition' => "checklist_topic LIKE '%$searchTopic%' AND user_id = $user_id"
-                            )
-                        )
-                    );
+                    )));
             $pages = $searchTopic == '' ? count(Checklist::model()->findAll(
                                             array('condition' => 'user_id = ' . $user_id))) :
                                             $pages;

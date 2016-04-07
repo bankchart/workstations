@@ -38,7 +38,7 @@ $(document).ready(function(){
     });
 
     $('#search-topic-form').on('submit', function(){
-        records_per_table.val(first_value_records_per_table);
+        //records_per_table.val(first_value_records_per_table);
         records_in_page.val(first_value_records_in_page);
         getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
                                 search_topic_name);
