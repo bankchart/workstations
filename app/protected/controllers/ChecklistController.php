@@ -30,6 +30,8 @@ class ChecklistController extends Controller {
             $offset = $_POST['page']*$limit - $limit;
             $checklistCriteria = new CDbCriteria;
             $checklistCriteria->condition = "user_id = :user_id";
+            $checklistCriteria->limit = $limit;
+            $checklistCriteria->offset = $offset;
             if($searchTopic != ''){
                 $checklistCriteria->condition .= " AND checklist_topic LIKE '%$searchTopic%'";
                 $checklistCriteria->params = array(
@@ -39,13 +41,29 @@ class ChecklistController extends Controller {
                 $checklistCriteria->params = array(':user_id' => $user_id);
             }
             $checklistModel = Checklist::model()->findAll($checklistCriteria);
+            $pages = count(Checklist::model()->findAll(array(
+                    'condition' => "checklist_topic LIKE '%$searchTopic%' AND user_id = $user_id"
+                            )
+                        )
+                    );
+            $pages = $searchTopic == '' ? count(Checklist::model()->findAll(
+                                            array('condition' => 'user_id = ' . $user_id))) :
+                                            $pages;
+            $temp = $pages/$limit;
+            $pages = strpos($temp, '.') ? floor($temp) + 1 : $temp;
+            $pageHtml = '';
+            for($i=1;$i<=$pages;$i++){
+                $selected = $_POST['page'] == $i ? 'selected' : '';
+                $pageHtml .= "<option $selected value='$i'>$i</option>";
+            }
             echo CJSON::encode(array(
                 'checklist_body_table' => $this->renderPartial(
                                 '_checklist-management-ajax',
                                 array('model' => $checklistModel, 'offset' => $offset),
                                 true
                 ),
-                'is_empty' => count($checklistModel) == 0 ? 'empty' : 'exist'
+                'is_empty' => count($checklistModel) == 0 ? 'empty' : 'exist',
+                'page_html' => $pageHtml
             ));
         }else{
             $this->redirect(array('index'));

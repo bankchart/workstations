@@ -19,6 +19,9 @@ $(document).ready(function(){
     var search_topic_name = $('#search-topic-name');
     var search_topic_form = $('#search-topic-form');
 
+    var first_value_records_per_table = records_per_table.val();
+    var first_value_records_in_page = records_in_page.val() == '' ? 0 : records_in_page.val();
+
     var topic_cl = $("#topic-cl");
     var detail_cl = $('#detail-cl');
     var deadline_cl = $('#deadline-cl');
@@ -35,6 +38,8 @@ $(document).ready(function(){
     });
 
     $('#search-topic-form').on('submit', function(){
+        records_per_table.val(first_value_records_per_table);
+        records_in_page.val(first_value_records_in_page);
         getCheckListBodyTable(body_table_id, records_per_table, records_in_page,
                                 search_topic_name);
         return false;
@@ -50,6 +55,17 @@ $(document).ready(function(){
 
     $('#add-checklist-btn-modal').on('click', function(){
         $('#add-checklist-form').submit();
+    });
+
+    records_per_table.on('change', function(){
+        records_in_page.val(1);
+        getCheckListBodyTable(body_table_id, $(this), records_in_page,
+                                search_topic_name);
+    });
+
+    records_in_page.on('change', function(){
+        getCheckListBodyTable(body_table_id, records_per_table, $(this),
+                                search_topic_name);
     });
 
     function getCheckListBodyTable(id, records, page, topic_name, message='loading...', delay=700){
@@ -72,6 +88,7 @@ $(document).ready(function(){
                     }else{
                         id.html(data.checklist_body_table);
                     }
+                    page.html(data.page_html);
                 }
             });
         }, delay);

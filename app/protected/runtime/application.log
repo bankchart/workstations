@@ -1876,3 +1876,36 @@ Stack trace:
 REQUEST_URI=/workstations/app/index.php?r=checklist/checklistmanagementajax
 in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (27)
 in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/07 15:33:17 [error] [php] Use of undefined constant i - assumed 'i' (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:44)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/checklistmanagementajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (44)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/07 15:33:35 [error] [php] Undefined variable: page (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:44)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/checklistmanagementajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (44)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
+2016/04/07 15:56:29 [error] [php] Undefined variable: page (/opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php:52)
+Stack trace:
+#0 /opt/lampp/htdocs/workstations/framework/web/CController.php(286): ChecklistController->runAction()
+#1 /opt/lampp/htdocs/workstations/framework/web/CController.php(265): ChecklistController->runActionWithFilters()
+#2 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(282): ChecklistController->run()
+#3 /opt/lampp/htdocs/workstations/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/workstations/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/workstations/app/index.php(13): CWebApplication->run()
+REQUEST_URI=/workstations/app/index.php?r=checklist/checklistmanagementajax
+in /opt/lampp/htdocs/workstations/app/protected/controllers/ChecklistController.php (52)
+in /opt/lampp/htdocs/workstations/app/index.php (13)
