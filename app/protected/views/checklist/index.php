@@ -119,7 +119,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Confirm change checklist status</h4>
+                <h4 id='title-checklist-modal' class="modal-title">Checklist detail</h4>
             </div>
             <div id='checklist-detail-body-modal' class="modal-body"></div>
             <div class="modal-footer">
